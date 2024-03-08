@@ -120,7 +120,8 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
                   const item = document.createElement('li');
                   item.classList.add('item');
                   item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w1280${movie.backdrop_path}')`;
-
+                 
+                        
                   const content = document.createElement('div');
                   content.classList.add('content');
                   content.innerHTML = `
@@ -128,16 +129,83 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
                       <p class='description'>${movie.overview}</p>
                       <button>Read More</button>
                   `;
+               
+
+//Select the nav element
+const nav = document.querySelector('.nav');
+// Select all movie items
+const movieItems = document.querySelectorAll('.item');
+
+// Add event listeners to the nav element for hover effect
+// nav.addEventListener('mouseenter', () => {
+//     // Make all movie items visible
+//     movieItems.forEach(item => {
+//         item.style.opacity = 1;
+//     });
+// });
+
+// nav.addEventListener('mouseleave', () => {
+//     // Make only movies 2 to 6 invisible
+//     movieItems.forEach((item, index) => {
+//         if (index > 1 && index < 6) {
+//             item.style.opacity = 0;
+//         }
+//     });
+// });
+
 
                   item.appendChild(content);
                   slider.appendChild(item);
               });
+
+
           })
           .catch(error => console.error('Error fetching top movies:', error));
   });
     
+  const slider = document.querySelector('.slider');
+  function activate(e) {
+    let inx=0;
+    const items = document.querySelectorAll('.item');
+    const nav = document.querySelector('.nav');
+
+    e.target.matches('.next') && slider.append(items[0])
+    e.target.matches('.prev') && slider.prepend(items[items.length-1]);
 
 
+    if (e.target.matches('.next'))
+    {
+         inx=2;
+    }
+
+    nav.addEventListener('mouseenter', () => {
+    // Make all movie items visible
+    items.forEach(item => {
+        item.style.opacity = 1;
+    });
+});
+
+nav.addEventListener('mouseleave', () => {
+    // Make only movies 2 to 6 invisible
+    items.forEach((item, index) => {
+        if (  index==inx ) {
+            item.style.opacity = 1;
+           
+        }
+        else
+        item.style.opacity = 0;
+    });
+});
+
+  
+  }
+
+
+  document.addEventListener('click',activate,false);
+
+
+
+//sidebar logic
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
@@ -159,12 +227,9 @@ function menuBtnChange() {
 }
 
 
-const slider = document.querySelector('.slider');
 
-function activate(e) {
-  const items = document.querySelectorAll('.item');
-  e.target.matches('.next') && slider.append(items[0])
-  e.target.matches('.prev') && slider.prepend(items[items.length-1]);
-}
 
-document.addEventListener('click',activate,false);
+
+
+
+  
