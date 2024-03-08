@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <script src="md.js" type="text/javascript"></script>
+</head>
+<body>
+
+    
+    
+    <h1>Movie Details</h1>
+    <div id="movieDetails" class="container">
+        <!-- Movie details will be populated here -->
+        <img id="poster" src="" alt="Movie Poster">
+        <h2 id="title"></h2>
+        <p id="description"></p>
+        <div id="videoPlayer">
+            <iframe id="movieIframe" src="" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div id="buttons">
+            <button onclick="switchEmbed('https://embed.smashystream.com/playere.php?tmdb=${getParameterByName(`id`)}')">Embed 1</button>
+
+            <button onclick="switchEmbed(`https://multiembed.mov/directstream.php?video_id=' + getParameterByName('id') + '&tmdb=1'`)">Embed 2</button>
+
+            <!-- Add more buttons for additional embeds -->
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
