@@ -2,8 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('cursor.png'), auto;
+    cursor: url('assets/cursor.png'), auto;
+    
   }
+
+  body {
+    background-color: #11101D;
+}
 
 main {
    position: relative;
@@ -76,6 +81,7 @@ main {
       font-size: 0.8rem;
     }
   
+    /* read more button */
     & button {
       width: fit-content;
       background-color: rgba(0,0,0,0.1);
@@ -129,7 +135,19 @@ main {
         background-color: rgba(255,255,255,0.3);
       }
     }
+
+    &:not(:hover)
+    {
+      .item {
+        /* opacity: 0; */
+        visibility: hidden;
+        transition: all 0.4s
+      }
+    }
   }
+
+
+
   
   @media (width > 650px) and (width < 900px) {
     .content {
@@ -168,29 +186,12 @@ main {
   
 /* CSS for main div*/
 
-body {
-    background-color: #11101D;
-    
-   
-}
-
-#main1 {
-    position: relative;
-    padding: 0 5%; /* Adjusted padding for better responsiveness */
-    margin-left: 60px;
-    /* margin-top: 740px; */
-    
-}
-
 /* Media query for smaller screens */
 @media only screen and (max-width: 768px) {
     #main {
         margin-left: 40px; /* Remove left margin to prevent overlap */
     }
 }
-
-
-
 
 /* Media queries for responsiveness */
 @media only screen and (max-width: 600px) {
@@ -237,9 +238,17 @@ nav a:hover {  /* Styling individual navbar elements*/
     animation: jello-horizontal 1.0s;
 }
 
-
-
  @-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+
+
+ 
+#main1 {
+  position: relative;
+  padding: 0 5%; /* Adjusted padding for better responsiveness */
+  margin-left: 60px;
+  /* margin-top: 740px; */
+}
+
 
  div.scroll-container {
     background-color: #1D1B31;

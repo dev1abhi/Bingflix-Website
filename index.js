@@ -43,14 +43,20 @@
 
 const apiKey = '68e094699525b18a70bab2f86b1fa706';
 const now_playing = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+const top_rated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
 const now_airing =`https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`;
 
+const nowPlayingIndia = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=hi-IN&region=IN&with_original_language=hi`;
+const bollywood = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=hi-IN&region=IN&with_original_language=hi`;
+
+const top_rated_series = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
+const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=hi-IN&region=IN&sort_by=popularity.desc&with_original_language=hi`;
 
     function fetchAndDisplayMovies(url, containerId) {
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          const movieList = document.getElementById(containerId);
+          const movieList = document.querySelector('#' + containerId);
     
           data.results.forEach(movie => {
             const image = document.createElement('img');
@@ -58,17 +64,79 @@ const now_airing =`https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`
             image.alt = movie.title;
             image.style.width = "350px"; // Adjust the width as needed
             image.style.height = "180px"; // Adjust the height as needed
+
+
+
+            image.addEventListener('click', () => {
+              handlePosterClick(movie.id);
+          });
+
+
             movieList.appendChild(image);
           });
         })
         .catch(error => console.error('Error fetching data:', error));
     }
+
+     // Function to handle poster click event
+     function handlePosterClick(movieId) {
+      // Redirect to movie details page with movie ID as URL parameter
+      window.location.href = `movie_details.html?id=${movieId}`;
+  }
     
     // Fetch and display upcoming movies
     fetchAndDisplayMovies(now_playing, 'movies');
     
-    // Fetch and display unrated movies
+    fetchAndDisplayMovies(top_rated,'topratedmovies');
+
+    fetchAndDisplayMovies(nowPlayingIndia,'moviesind');
+
+    fetchAndDisplayMovies(bollywood,'bollywood');
+
+
+    //series
+
     fetchAndDisplayMovies(now_airing, 'series');
+
+    fetchAndDisplayMovies(top_rated_series,'seriestr');
+
+    fetchAndDisplayMovies(bollywood_series,'bollyseries');
+
+    //movies-slider
+
+    //fetchAndDisplayMovies(navmovies,'slider');
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const apiKey = '68e094699525b18a70bab2f86b1fa706';
+      const topMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+
+      fetch(topMoviesUrl)
+          .then(response => response.json())
+          .then(data => {
+              const slider = document.querySelector('.slider');
+
+              data.results.slice(0, 6).forEach(movie => {
+                  const item = document.createElement('li');
+                  item.classList.add('item');
+                  item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w1280${movie.backdrop_path}')`;
+
+                  const content = document.createElement('div');
+                  content.classList.add('content');
+                  content.innerHTML = `
+                      <h2 class='title'>${movie.title}</h2>
+                      <p class='description'>${movie.overview}</p>
+                      <button>Read More</button>
+                  `;
+
+                  item.appendChild(content);
+                  slider.appendChild(item);
+              });
+          })
+          .catch(error => console.error('Error fetching top movies:', error));
+  });
+    
+
 
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");

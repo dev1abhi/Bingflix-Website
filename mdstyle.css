@@ -1,0 +1,55 @@
+body 
+{
+    background-color: black;
+    color: wheat;
+}
+
+#buttons
+{
+    margin-top: 5%;
+}
+
+button 
+{
+    border-radius: 1.2rem;
+    width: 20%;
+    padding: 1rem;
+    font-family: fantasy;
+    font-size: medium;
+
+}
+
+h1 
+{
+    font-family: Poppins;
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+
+h2 {
+    font-family: Poppins;
+}
+
+h3 
+{
+    font-family: Poppins;
+}
+
+p {
+    font-family: Poppins;
+}
+
+#desc
+{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+#castList{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    width: fit-content;
+    overflow: hidden;
+}
