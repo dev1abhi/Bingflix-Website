@@ -1,4 +1,5 @@
 function switchEmbed(embedUrl) {
+    console.log("Switching embed to:", embedUrl);
     console.log(embedUrl);
     const iframe = document.getElementById('movieIframe');
     iframe.src = embedUrl;
@@ -16,6 +17,7 @@ function getParameterByName(name, url) {
 
 
 function switchEmbed1(embedUrl) {
+    console.log("Switching embed to:", embedUrl);
     const movieI = getParameterByName('id');
     const iframe = document.getElementById('movieIframe');
     iframe.src = embedUrl + movieI;}
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
             fetch(videosUrl)
                 .then(response => response.json())
                 .then(data => {
+                    console.log("showing trailer");
                     // Find trailer key
                     const trailer = data.results.find(video => video.type === "Trailer" && video.site === "YouTube");
                     if (trailer) {

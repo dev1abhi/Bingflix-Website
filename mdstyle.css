@@ -2,9 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    cursor: url('assets/cursor.png'), auto;
-    
+    box-sizing: border-box;    
   }
 
 body 
@@ -17,7 +15,6 @@ body
 main 
 {
     position: relative;
-    z-index: -99;
     margin-left: 80px;
 }
 
