@@ -22,7 +22,6 @@
 
 <body>
 
-    
   <div  class="sidebar">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus icon'></i>
@@ -104,11 +103,13 @@
     </ul>
   </div>
 
-<main>
-    <center>
-    <div id="videoPlayer" style="background-color: rgb(3, 16, 27);color: black; ">
+  <main>
+    <center >
+    <div id="videoPlayer" style="background-color: rgb(3, 16, 27);color: black;  ">
+      <center>
         <iframe id="movieIframe" src="" width="80%" height="500" style="margin-bottom: -5px;" frameborder="0" allowfullscreen></iframe>
-    </div>
+      </center>
+      </div>
 
     <div id="buttons">
         <button id="Trailerbtn">Watch Trailer</button>
@@ -122,33 +123,30 @@
         
         <!-- Add more buttons for additional embeds -->
     
-</center>
 
-&nbsp;
-
-   
-
-    <center>
-    <h1 >Movie Details</h1>
     <div id="movieDetails" class="container">
         <!-- Movie details will be populated here -->
-        <img id="poster" src="" alt="Movie Poster">
+        <h1 >Movie Details</h1>
+        <img id="poster" src="" alt="Movie Poster" style="width: 60vw;">
+      
         <h2 id="title"></h2>
 
         <div id="desc">
         <p id="description"></p>
     </div>
 
-    <div id="cast">
+    
         <h3>Cast:</h3>
-        <div id="castList"></div>
-    </div>
-
+       
+        <div id="castList" ></div>
+     
+      
+     
+    
 </div>
 </center>
+
 </main>
-
-
 
     
 <script src="md.js" type="text/javascript"></script>

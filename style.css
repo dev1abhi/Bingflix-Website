@@ -72,14 +72,14 @@ main {
     display: none;
   
     & .title {
-      font-family: 'arial-black';
+      font-family: 'poppins';
       text-transform: uppercase;
     }
   
     & .description {
       line-height: 1.7;
       margin: 1rem 0 1.5rem;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
   
     /* read more button */
@@ -189,7 +189,7 @@ main {
     }
 }
 
-/* Media queries for responsiveness */
+/* Media queries for responsiveness of navbar */
 @media only screen and (max-width: 600px) {
 nav {
 flex-direction: column; /* Stack nav links vertically on smaller screens */
@@ -215,15 +215,15 @@ nav {
     border-right: transparent;
     margin: 20px 0;
     text-decoration-color: rgba(240, 248, 255, 0.443);
+    margin-bottom: 5rem;
 }
 
 nav a {
     color: #fff;
     text-decoration: wavy;
     font-family: 'Press Start 2p';
-    font-size: x-small;
-    padding: 5px;
-    
+    font-size: 0.8em;
+    padding: 5px;  
     border-radius: 5px;
     margin: 10px; /** adds space between nav elements**/
     
@@ -237,28 +237,80 @@ nav a:hover {  /* Styling individual navbar elements*/
  @-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
 
 
- 
+
+
+
 #main1 {
   position: relative;
+  width: 100%;
   /* Adjusted padding for better responsiveness */
   /* padding: 0 5%;  */
   /* margin-left: 60px; */
   /* margin-top: 740px; */
 }
 
+@media only screen and (max-width: 600px) {
+  #main1 {
+    width: 140%;
+  }
+}
+
+p {
+  font-size: 25px;
+  font-family: poppins;
+  font-weight: bolder;
+ }
+
+.btf {
+  z-index: 99;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 60px;
+  height: 100%;
+  border-radius: 15px ;
+  background-color: #11101da1;
+}
+
+.btw {
+  z-index: 99;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 60px;
+  height: 100%;
+  border-radius: 15px ;
+  background-color: #11101da1;
+}
+
+.bx.bxs-chevron-right {
+  font-size: 40px; /* Adjust the size as needed */
+  color: #ffffff; /* Your desired color */
+}
+
+.bx.bxs-chevron-left {
+  font-size: 40px; /* Adjust the size as needed */
+  color: #ffffff; /* Your desired color */
+}
+
+.imgbtn {
+  position: relative;
+}
 
  div.scroll-container {
+  
     background-color: #1D1B31;
-    height: 200px;
-    overflow-x:scroll;
+    height: fit-content;
+    overflow-x: scroll;
     border-radius: 15px;
     display: flex;
-    
     margin-top: 20px;
     margin-bottom: 20px;
     white-space: nowrap;
     padding: 10px;
     box-sizing: border-box;
+    z-index: 1;
+
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -282,39 +334,17 @@ display: none; /* Chrome, Safari, Opera */
         
         transform: translateX(-500%); /* Translate to the left (scroll) */
     }
-    /* Add an intermediate keyframe for smoother transition */
-    
+    /* Add an intermediate keyframe for smoother transition */  
 }
 
 
-@keyframes scrollSeries {
-    0% {
-        transform: translateX(0); /* Start from no translation */
-    }
-    100% {
-        transform: translateX(100%); /* Translate to the right (reverse scroll) */
-    }
-}
-
-#series:not(:hover) img {
-    animation: scrollMovies 10s reverse infinite; /* Adjust duration as needed */
-}
-
-/* Apply animation only when not hovering over the container */
-div.scroll-container:not(:hover) {
-overflow-x:auto; /* Hide scrollbar */
-}
+/* div.scroll-container img {
+  animation: scrollMovies 20s linear infinite;
+} */
 
 
-/* Apply animation only when not hovering over the container */
-div.scroll-container:not(:hover) img {
-    animation: scrollMovies 10s linear infinite;
-    /* Add animation on hover */
-    }
-    
-    
 div.scroll-container img {
-    max-height: 200px;
+    max-height: fit-content;
     max-width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -327,9 +357,6 @@ div.scroll-container img {
 
 
 /* CSS for sidebar div*/
-
-
-
 
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');

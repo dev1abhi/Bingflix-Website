@@ -45,7 +45,6 @@ const apiKey = '68e094699525b18a70bab2f86b1fa706';
 const now_playing = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
 const top_rated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
 const now_airing =`https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`;
-
 const nowPlayingIndia = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=hi-IN&region=IN&with_original_language=hi`;
 const bollywood = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=hi-IN&region=IN&with_original_language=hi`;
 
@@ -62,8 +61,8 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
             const image = document.createElement('img');
             image.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
             image.alt = movie.title;
-            image.style.width = "350px"; // Adjust the width as needed
-            image.style.height = "180px"; // Adjust the height as needed
+            image.style.width = "320px"; // Adjust the width as needed
+            image.style.height = "250px"; // Adjust the height as needed
 
 
 
@@ -104,64 +103,41 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
 
     //movies-slider
 
-    //fetchAndDisplayMovies(navmovies,'slider');
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-      const apiKey = '68e094699525b18a70bab2f86b1fa706';
-      const topMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
-
-      fetch(topMoviesUrl)
-          .then(response => response.json())
-          .then(data => {
-              const slider = document.querySelector('.slider');
-
-              data.results.slice(0, 6).forEach(movie => {
-                  const item = document.createElement('li');
-                  item.classList.add('item');
-                  item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w1280${movie.backdrop_path}')`;
-                 
-                        
-                  const content = document.createElement('div');
-                  content.classList.add('content');
-                  content.innerHTML = `
-                      <h2 class='title'>${movie.title}</h2>
-                      <p class='description'>${movie.overview}</p>
-                      <button>Read More</button>
-                  `;
-               
-
-//Select the nav element
-const nav = document.querySelector('.nav');
-// Select all movie items
-const movieItems = document.querySelectorAll('.item');
-
-// Add event listeners to the nav element for hover effect
-// nav.addEventListener('mouseenter', () => {
-//     // Make all movie items visible
-//     movieItems.forEach(item => {
-//         item.style.opacity = 1;
-//     });
-// });
-
-// nav.addEventListener('mouseleave', () => {
-//     // Make only movies 2 to 6 invisible
-//     movieItems.forEach((item, index) => {
-//         if (index > 1 && index < 6) {
-//             item.style.opacity = 0;
-//         }
-//     });
-// });
-
-
-                  item.appendChild(content);
-                  slider.appendChild(item);
-              });
-
-
-          })
-          .catch(error => console.error('Error fetching top movies:', error));
+    document.addEventListener("DOMContentLoaded", async function() {
+      try {
+          const apiKey = '68e094699525b18a70bab2f86b1fa706';
+          const topMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+  
+          const response = await fetch(topMoviesUrl);
+          const data = await response.json();
+  
+          const slider = document.querySelector('.slider');
+  
+          data.results.slice(0, 6).forEach(movie => {
+              const item = document.createElement('li');
+              item.classList.add('item');
+              item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w1280${movie.backdrop_path}')`;
+  
+              const content = document.createElement('div');
+              content.classList.add('content');
+              content.innerHTML = `
+                  <h2 class='title'>${movie.title}</h2>
+                  <p class='description'>${movie.overview}</p>
+                  <button>Watch Now</button>
+              `;
+  
+              const nav = document.querySelector('.nav');
+              const movieItems = document.querySelectorAll('.item');
+  
+              item.appendChild(content);
+              slider.appendChild(item);
+          });
+      } catch (error) {
+          console.error('Error fetching top movies:', error);
+      }
   });
+  
+   
     
   const slider = document.querySelector('.slider');
   function activate(e) {
@@ -197,7 +173,6 @@ nav.addEventListener('mouseleave', () => {
     });
 });
 
-  
   }
 
 
@@ -227,9 +202,79 @@ function menuBtnChange() {
 }
 
 
+//HANDLES FORWARD AND BACKWARD LOGIC ON BUTTON CLICK
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all the scroll containers and buttons
+  const scrollContainers = document.querySelectorAll('.scroll-container');
+  const fwButtons = document.querySelectorAll('.btf');
+  const bwButtons = document.querySelectorAll('.btw');
+
+  // Function to scroll the container to the left
+  function scrollLeft(container) {
+      container.scrollLeft -= 200; // Adjust the scroll amount as needed
+  }
+
+  // Function to scroll the container to the right
+  function scrollRight(container) {
+      container.scrollLeft += 200; // Adjust the scroll amount as needed
+  }
+
+  // Attach event listeners to all forward buttons
+  fwButtons.forEach(function(button, index) {
+      button.addEventListener('click', function() {
+          scrollLeft(scrollContainers[index]);
+      });
+  });
+
+  // Attach event listeners to all backward buttons
+  bwButtons.forEach(function(button, index) {
+      button.addEventListener('click', function() {
+          scrollRight(scrollContainers[index]);
+      });
+  });
+});
 
 
 
+//HANDLES PAUSING AND RESUMING OF ANIMATION ON HOVER AND NOT HOVER
 
 
-  
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all the forward buttons, backward buttons, images, and scroll containers
+  const fwButtons = document.querySelectorAll('.btf');
+  const bwButtons = document.querySelectorAll('.btw');
+  const imagesContainers = document.querySelectorAll('.scroll-container');
+
+  function stopAnimation(images) {
+      images.forEach(img => {
+          img.style.animation = 'none';
+      });
+  }
+
+  function resumeAnimation(images) {
+      images.forEach(img => {
+          img.style.animation = 'scrollMovies 20s linear infinite';
+      });
+  }
+
+  // Attach event listeners to all forward buttons
+  fwButtons.forEach((fwButton, index) => {
+      const images = imagesContainers[index].querySelectorAll('img');
+      fwButton.addEventListener('mouseover', () => stopAnimation(images));
+      fwButton.addEventListener('mouseleave', () => resumeAnimation(images));
+  });
+
+  // Attach event listeners to all backward buttons
+  bwButtons.forEach((bwButton, index) => {
+      const images = imagesContainers[index].querySelectorAll('img');
+      bwButton.addEventListener('mouseover', () => stopAnimation(images));
+      bwButton.addEventListener('mouseleave', () => resumeAnimation(images));
+  });
+
+  // Attach event listeners to all scroll containers
+  imagesContainers.forEach(container => {
+      container.addEventListener('mouseover', () => stopAnimation(container.querySelectorAll('img')));
+      container.addEventListener('mouseleave', () => resumeAnimation(container.querySelectorAll('img')));
+  });
+});

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">  
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -33,10 +34,10 @@
       </li>
       <li>
         <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
+          <i class='bx bx-home'></i>
+          <span class="links_name">Home</span>
         </a>
-         <span class="tooltip">Dashboard</span>
+         <span class="tooltip">Home</span>
       </li>
       <li>
        <a href="#">
@@ -45,20 +46,7 @@
        </a>
        <span class="tooltip">User</span>
      </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-chat' ></i>
-         <span class="links_name">Messages</span>
-       </a>
-       <span class="tooltip">Messages</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analytics</span>
-       </a>
-       <span class="tooltip">Analytics</span>
-     </li>
+  
      <li>
        <a href="#">
          <i class='bx bx-folder' ></i>
@@ -66,19 +54,13 @@
        </a>
        <span class="tooltip">Files</span>
      </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Order</span>
-       </a>
-       <span class="tooltip">Order</span>
-     </li>
+    
      <li>
        <a href="#">
          <i class='bx bx-heart' ></i>
-         <span class="links_name">Saved</span>
+         <span class="links_name">Liked</span>
        </a>
-       <span class="tooltip">Saved</span>
+       <span class="tooltip">Liked</span>
      </li>
      <li>
        <a href="#">
@@ -103,7 +85,6 @@
   
     <main>
       <ul class='slider'> </ul>
-
       <nav class='nav'>
         <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
         <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
@@ -135,81 +116,97 @@
     
 
     <div id="Movies">
-        <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+        <p style="color: #fff;">
             Movies (In Theatres Worldwide):
         </p>
     </div>
 
-    <div id="movies" class="scroll-container" >
-       
-    </div>
+      <div  class="imgbtn">
+    <div id="movies" class="scroll-container" ></div>
+    <button id="fwbtn"  class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+    <button id="bwbtn"  class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
+
+  </div>
+    
 
     <div id="TopratedMovies">
-      <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
-          Top Rated Movies
+      <p style="color: #fff;">
+          Top Rated Movies:
       </p>
   </div>
 
-  <div id="topratedmovies" class="scroll-container">
-      <!-- Images here -->
-     
-  </div>
+  <div  class="imgbtn">
+  <div id="topratedmovies" class="scroll-container"></div> 
+  <button id="fw1btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'></i></button>
+  <button id="bw1btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'></i></button>
+</div>
 
     <div id="MoviesInd">
-      <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+      <p style="color: #fff;">
           Movies (In Indian Theatres)
       </p>
   </div>
 
-  <div id="moviesind" class="scroll-container">
-      
+  <div  class="imgbtn">
+     <div id="moviesind" class="scroll-container"></div>  
+    <button id="fw2btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+    <button id="bw2btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
   </div>
 
   <div id="Bollywood">
-    <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+    <p style="color: #fff;">
         Bollywood
-    </p>
+    </p>   
 </div>
 
-<div id="bollywood" class="scroll-container">
-    
+<div  class="imgbtn">
+<div id="bollywood" class="scroll-container"></div>
+<button id="fw2btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+  <button id="bw2btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
 </div>
 
 
    
 
     <div id="Series">
-        <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+        <p style="color: #fff;">
             Series: (Now-Airing)
         </p>
     </div>
 
-    <div id="series" class="scroll-container" >
-    </div>
+    <div  class="imgbtn">
+    <div id="series" class="scroll-container"></div>
+      <button id="fw2btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+      <button id="bw2btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
+  </div>
 
 
     <div id="SeriesTr">
-      <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+      <p style="color: #fff;">
           Series: (Top-Rated)
       </p>
   </div>
 
-  <div id="seriestr" class="scroll-container" >
-  </div>
-
+  <div  class="imgbtn">
+  <div id="seriestr" class="scroll-container"></div>
+  <button id="fw2btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+  <button id="bw2btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
+</div>
 
 
 
 
       <div id="BollySeries">
-        <p style="color: #fff;font-family: Consolas;font-weight: bolder;font-size: larger;">
+        <p style="color: #fff;">
             Series: (India)
         </p>
     </div>
 
-    <div id="bollyseries" class="scroll-container" >
-       
-    </div>
+    <div  class="imgbtn">
+    <div id="bollyseries" class="scroll-container"></div>
+    <button id="fw2btn" class="btf"><i class='bx bxs-chevron-left' style='color:#ffffff'  ></i></button>
+    <button id="bw2btn" class="btw"><i class='bx bxs-chevron-right' style='color:#ffffff'  ></i></button>
+  </div>
 
 
     

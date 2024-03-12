@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 data.cast.slice(0, 5).forEach(actor => {
                     const listItem = document.createElement('div');
                     listItem.style.width='fit-content';
+
                     listItem.style.display='flex';
                     listItem.style.flexDirection='column';
                     listItem.style.paddingRight= '20px';
                     listItem.style.fontFamily='Poppins';
+                    listItem.style.fontSize ='1vw'
                     
 
                     const actorName = document.createElement('span');
