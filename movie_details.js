@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     actorName.textContent = actor.name;
                     actorImage.src = `https://image.tmdb.org/t/p/w185${actor.profile_path}`;
                     actorImage.alt = actor.name;
+                    actorImage.style.borderRadius="1.2rem";
                     listItem.appendChild(actorImage);
                     listItem.appendChild(actorName);
                     castList.appendChild(listItem);
@@ -126,3 +127,13 @@ function menuBtnChange() {
    closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
  }
 }
+
+function searchMovies() {
+    const query = document.getElementById('searchInput').value;
+    if (query.length < 3) {
+      alert("Please enter at least 3 characters for search.");
+      return;
+    }
+    const url = `results.html?query=${query}`;
+    window.location.href = url;
+  }

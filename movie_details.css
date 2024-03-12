@@ -61,6 +61,10 @@ p {
   padding-right: 20%;
 }
 
+#poster {
+  border-radius: 1.2rem;
+}
+
 #movieDetails {
 width: 100%
 }

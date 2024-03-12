@@ -102,7 +102,6 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
     fetchAndDisplayMovies(bollywood_series,'bollyseries');
 
     //movies-slider
-
     document.addEventListener("DOMContentLoaded", async function() {
       try {
           const apiKey = '68e094699525b18a70bab2f86b1fa706';
@@ -116,7 +115,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           data.results.slice(0, 6).forEach(movie => {
               const item = document.createElement('li');
               item.classList.add('item');
-              item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w1280${movie.backdrop_path}')`;
+              item.style.backgroundImage = `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`;
   
               const content = document.createElement('div');
               content.classList.add('content');
@@ -278,3 +277,14 @@ document.addEventListener("DOMContentLoaded", function() {
       container.addEventListener('mouseleave', () => resumeAnimation(container.querySelectorAll('img')));
   });
 });
+
+
+function searchMovies() {
+  const query = document.getElementById('searchInput').value;
+  if (query.length < 3) {
+    alert("Please enter at least 3 characters for search.");
+    return;
+  }
+  const url = `results.html?query=${query}`;
+  window.location.href = url;
+}

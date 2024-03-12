@@ -29,8 +29,9 @@
     <ul class="nav-list">
       <li>
           <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
+         <input id="searchInput" type="text" placeholder="Search..." onkeydown="if (event.keyCode === 13) searchMovies()">
          <span class="tooltip">Search</span>
+         
       </li>
       <li>
         <a href="#">
@@ -221,7 +222,7 @@
 
 
 
-<script src="index.js" type="text/javascript"></script>
+<script src="script.js" type="text/javascript"></script>
 
 </body>
 
