@@ -53,7 +53,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
 
     function fetchAndDisplayMovies(url, containerId) {
       fetch(url)
-        .then(response => response.json())
+        .then(response => response.json()) //callback function (returning response.json())
         .then(data => {
           const movieList = document.querySelector('#' + containerId);
     

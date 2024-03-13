@@ -1,9 +1,3 @@
-function switchEmbed(embedUrl) {
-    console.log("Switching embed to:", embedUrl);
-    console.log(embedUrl);
-    const iframe = document.getElementById('movieIframe');
-    iframe.src = embedUrl;
-}
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -15,6 +9,12 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+function switchEmbed(embedUrl) {
+    console.log("Switching embed to:", embedUrl);
+    console.log(embedUrl);
+    const iframe = document.getElementById('movieIframe');
+    iframe.src = embedUrl;
+}
 
 function switchEmbed1(embedUrl) {
     console.log("Switching embed to:", embedUrl);
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(error => console.error('Error fetching cast details:', error));
     }
 
+    //fetchCastDetails is also getting called inside this
     fetch(movieDetailsUrl)
         .then(response => response.json())
         .then(data => {

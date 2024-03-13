@@ -19,6 +19,7 @@ function getQueryVariable(variable) {
     document.getElementById('results').innerHTML = '<p>No results found.</p>';
   }
 
+  //this function is seraching movies and bringing the response from api
   async function searchMovies(query) {
     const apiKey = '68e094699525b18a70bab2f86b1fa706'; // Replace 'YOUR_API_KEY' with your actual TMDb API key
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
@@ -60,11 +61,10 @@ function getQueryVariable(variable) {
         movieElement.appendChild(h2Element);
       
         resultsContainer.appendChild(movieElement);
-      });
-      
+      });   
   }
 
-  // Function to handle poster click event
+  // Function to handle poster click event to redirect to movie_details
   function handlePosterClick(movieId) {
     window.location.href = `movie_details.html?id=${movieId}`;
 }
