@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
             fetchCastDetails();
 
             // Set default embed URL
-            switchEmbed('https://embed.smashystream.com/playere.php?tmdb=${movieId}');
+            switchEmbed('https://vidsrc.xyz/embed/' + getParameterByName('id'));
         })
         .catch(error => console.error('Error fetching movie details:', error));
 

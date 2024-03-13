@@ -21,6 +21,12 @@ main {
    overflow-y: hidden;
   }
 
+  .vertical-div {
+    width: 100px; /* Adjust width as needed */
+    height: 10vh; /* Adjust height as needed */
+    background-color: transparent; /* Set background color if needed */
+  }
+
 
   .item {
     
