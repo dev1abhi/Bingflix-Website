@@ -52,10 +52,17 @@ const top_rated_series = `https://api.themoviedb.org/3/tv/top_rated?api_key=${ap
 const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=hi-IN&region=IN&sort_by=popularity.desc&with_original_language=hi`;
 
     function fetchAndDisplayMovies(url, containerId) {
+
+      const movieList = document.querySelector('#' + containerId);
+       movieList.innerHTML = ""; // Clear previous content
+     // Add shimmer animation placeholder
+     movieList.classList.add('shimmer-placeholder');
+
       fetch(url)
         .then(response => response.json()) //callback function (returning response.json())
         .then(data => {
-          const movieList = document.querySelector('#' + containerId);
+          //const movieList = document.querySelector('#' + containerId);
+          movieList.classList.remove('shimmer-placeholder'); // Remove the shimmer animation placeholder
     
           data.results.forEach(movie => {
             const image = document.createElement('img');
