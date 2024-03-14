@@ -274,11 +274,13 @@ p {
   left: 0%;
   width: 60px;
   height: 100%;
+  border: none;
   border-radius: 15px ;
   background-color: #11101da1;
 }
 
 .btw {
+  border: none;
   z-index: 99;
   position: absolute;
   top: 0%;
@@ -304,9 +306,9 @@ p {
 }
 
  div.scroll-container {
-  
     background-color: #1D1B31;
-    height: fit-content;
+    min-height: 35vh;
+    max-height: fit-content;
     overflow-x: scroll;
     border-radius: 15px;
     display: flex;
@@ -316,7 +318,6 @@ p {
     padding: 10px;
     box-sizing: border-box;
     z-index: 1;
-
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
