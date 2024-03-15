@@ -16,13 +16,6 @@ function switchEmbed(embedUrl) {
     iframe.src = embedUrl;
 }
 
-function switchEmbed1(embedUrl) {
-    console.log("Switching embed to:", embedUrl);
-    const movieI = getParameterByName('id');
-    const iframe = document.getElementById('movieIframe');
-    iframe.src = embedUrl + movieI;}
-
-
 document.addEventListener("DOMContentLoaded", function() {
    
     // Fetch movie details using movie ID from URL parameter

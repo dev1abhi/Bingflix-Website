@@ -45,7 +45,7 @@ button:hover {
 h1 
 {
   font-family: Poppins;
-  font-size: 40px;
+  font-size: 3vw;
   text-decoration: underline;
 }
 
@@ -57,10 +57,12 @@ h2 {
 h3 
 {
   font-family: Poppins;
+  font-size: 2vw;
 }
 
 p {
   font-family: Poppins;
+  font-size: 1vw;
 }
 
 #desc
@@ -80,7 +82,7 @@ width: 100%
 #castList{
   display: flex;
   flex-direction: row;
-  padding: 2%;
+  padding: 1%;
   width: fit-content;
   overflow-x: hidden;
  }

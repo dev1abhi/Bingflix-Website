@@ -68,8 +68,8 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
             const image = document.createElement('img');
             image.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
             image.alt = movie.title;
-            image.style.width = "320px"; // Adjust the width as needed
-            image.style.height = "250px"; // Adjust the height as needed
+            // image.style.width = "350px"; // Adjust the width as needed
+            image.style.height = "35vh"; // Adjust the height as needed
 
 
 
@@ -89,24 +89,55 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
       // Redirect to movie details page with movie ID as URL parameter
       window.location.href = `movie_details.html?id=${movieId}`;
   }
+
+  function fetchAndDisplaySeries(url, containerId) {
+    const seriesList = document.querySelector('#' + containerId);
+    seriesList.innerHTML = ""; // Clear previous content
+    // Add shimmer animation placeholder
+    seriesList.classList.add('shimmer-placeholder');
+  
+    fetch(url)
+      .then(response => response.json()) //callback function (returning response.json())
+      .then(data => {
+        seriesList.classList.remove('shimmer-placeholder'); // Remove the shimmer animation placeholder
+  
+        data.results.forEach(series => {
+          const image = document.createElement('img');
+          image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
+          image.alt = series.name;
+          image.style.height = "35vh"; // Adjust the height as needed
+  
+          image.addEventListener('click', () => {
+            fetchAndDisplaySeriesEpisodes(series.id);
+          });
+  
+          seriesList.appendChild(image);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+  
+  function fetchAndDisplaySeriesEpisodes(seriesId) {
+    // Redirect to series details page with series ID as URL parameter
+    window.location.href = `series_details.html?id=${seriesId}`;
+  }
+  
     
-    // Fetch and display upcoming movies
-    fetchAndDisplayMovies(now_playing, 'movies');
-    
-    fetchAndDisplayMovies(top_rated,'topratedmovies');
+   
 
-    fetchAndDisplayMovies(nowPlayingIndia,'moviesind');
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchAndDisplayMovies(now_playing, 'movies');
+      fetchAndDisplayMovies(top_rated, 'topratedmovies');
+      fetchAndDisplayMovies(nowPlayingIndia, 'moviesind');
+      fetchAndDisplayMovies(bollywood, 'bollywood');
+  
+      // Series
+      fetchAndDisplaySeries(now_airing, 'series');
+      fetchAndDisplaySeries(top_rated_series, 'seriestr');
+      fetchAndDisplaySeries(bollywood_series, 'bollyseries');
+  });
 
-    fetchAndDisplayMovies(bollywood,'bollywood');
 
-
-    //series
-
-    fetchAndDisplayMovies(now_airing, 'series');
-
-    fetchAndDisplayMovies(top_rated_series,'seriestr');
-
-    fetchAndDisplayMovies(bollywood_series,'bollyseries');
 
     //movies-slider
     document.addEventListener("DOMContentLoaded", async function() {
@@ -180,9 +211,7 @@ nav.addEventListener('mouseleave', () => {
 });
 
   }
-
-
-  document.addEventListener('click',activate,false);
+document.addEventListener('click',activate,false);
 
 
 
