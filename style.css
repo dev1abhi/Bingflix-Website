@@ -323,7 +323,8 @@ p {
 
 @media (max-width: 768px) {
   div.scroll-container {
-      min-height: 25vh; /* Adjust the height as needed for smaller screens */
+      min-height: 25vh;
+      max-height: 25vh; /* Adjust the height as needed for smaller screens */
   }
 }
 
