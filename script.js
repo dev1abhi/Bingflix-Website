@@ -69,8 +69,13 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
             image.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
             image.alt = movie.title;
             // image.style.width = "350px"; // Adjust the width as needed
-            image.style.height = "35vh"; // Adjust the height as needed
+            //image.style.height = "35vh"; // Adjust the height as needed
 
+            if (window.innerWidth <= 768) { // Adjust the threshold as needed for your mobile design
+              image.style.height = "25vh"; // Decrease the height for mobile devices
+          } else {
+              image.style.height = "35vh"; // Default height for larger screens
+          }
 
 
             image.addEventListener('click', () => {
@@ -105,8 +110,15 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           const image = document.createElement('img');
           image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
           image.alt = series.name;
-          image.style.height = "35vh"; // Adjust the height as needed
+          //image.style.height = "35vh"; // Adjust the height as needed
           //image.style.width = "35vw"; 
+
+          if (window.innerWidth <= 768) { // Adjust the threshold as needed for your mobile design
+            image.style.height = "25vh"; // Decrease the height for mobile devices
+        } else {
+            image.style.height = "35vh"; // Default height for larger screens
+        }
+
   
           image.addEventListener('click', () => {
             fetchAndDisplaySeriesEpisodes(series.id);

@@ -321,6 +321,12 @@ p {
     z-index: 1;
 }
 
+@media (max-width: 768px) {
+  div.scroll-container {
+      min-height: 25vh; /* Adjust the height as needed for smaller screens */
+  }
+}
+
 /* Hide scrollbar for Chrome, Safari, and Opera */
 .scroll-container {
 scrollbar-width: none; /* Firefox */
@@ -332,7 +338,7 @@ display: none; /* Chrome, Safari, Opera */
 }
 
 div.scroll-container img {
-  height: 20vw;
+  /* height: 20vw; */
   max-width: 100%;
   padding: 10px;
   box-sizing: border-box;
