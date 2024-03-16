@@ -113,12 +113,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           //image.style.height = "35vh"; // Adjust the height as needed
           //image.style.width = "35vw"; 
 
-          if (window.innerWidth <= 768) { // Adjust the threshold as needed for your mobile design
-            image.style.height = "25vh"; // Decrease the height for mobile devices
-        } else {
-            image.style.height = "35vh"; // Default height for larger screens
-        }
-
+        
   
           image.addEventListener('click', () => {
             fetchAndDisplaySeriesEpisodes(series.id);
@@ -126,6 +121,8 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
   
           seriesList.appendChild(image);
         });
+
+        adjustImageHeights();
       })
       .catch(error => console.error('Error fetching data:', error));
   }
@@ -173,7 +170,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
               content.innerHTML = `
                   <h2 class='title'>${movie.title}</h2>
                   <p class='description'>${movie.overview}</p>
-                  <button>Watch Now</button>
+                  <a href=movie_details.html?id=${movie.id} class="watch-now-button">Watch Now</a>
               `;
   
               const nav = document.querySelector('.nav');
@@ -222,8 +219,7 @@ nav.addEventListener('mouseleave', () => {
         item.style.opacity = 0;
     });
 });
-
-  }
+}
 document.addEventListener('click',activate,false);
 
 
@@ -337,3 +333,23 @@ function searchMovies() {
   const url = `results.html?query=${query}`;
   window.location.href = url;
 }
+
+
+ // Function to adjust image heights based on window width
+ function adjustImageHeights() {
+  const images = document.querySelectorAll('img'); // Select all images
+
+  images.forEach(image => {
+      if (window.innerWidth <= 768) {
+          image.style.height = "25vh"; // Decrease the height for mobile devices
+      } else {
+          image.style.height = "35vh"; // Default height for larger screens
+      }
+  });
+}
+
+
+// Call the adjustImageHeights function whenever the window is resized
+window.addEventListener('resize', function() {
+  adjustImageHeights();
+});

@@ -31,7 +31,8 @@ button
   width: 20%;
   padding: 1rem;
   font-family: fantasy;
-  font-size: medium;
+  font-size: 1rem;
+
   cursor: pointer;
   background-color: #f4f3ff;
   transition: background-color 0.3s ease; 
@@ -352,7 +353,7 @@ margin: 18px
   line-height: 1.6;
   padding: 1em;
   
-  max-width: 50%;
+  max-width: fit-content;
   overflow-x: auto;
 }
 
@@ -372,6 +373,7 @@ margin: 18px
   background-color: #1f121200;
   padding: 0.2em 0.4em;
   border-radius: 0.2em;
+  font-size: 0.8rem;
 }
 
 .markdown-div pre {
@@ -386,3 +388,19 @@ margin: 18px
   margin-top: 0;
   padding-left: 1.5em;
 }
+
+select {
+  /* padding: 1%; */
+  padding: 1rem;
+  border-radius: 1.2rem;
+  font-size: 1rem;
+}
+
+option 
+{
+  font-family: poppins;
+  /* padding: 1%; */
+  /* font-size: 1vw; */
+}
+
+

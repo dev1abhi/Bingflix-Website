@@ -11,8 +11,9 @@
     margin-left: 80px;
   }
 
-main {
-   position: relative;
+  /* Main is covering the carousel */
+  main {
+    position: relative;
     width: 100%;
     height: 100%;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -90,15 +91,16 @@ main {
     }
   
     /* read more button */
-    & button {
+    .watch-now-button {
       width: fit-content;
+      text-decoration: none;
       background-color: rgba(0,0,0,0.1);
       color: white;
       border: 2px solid white;
       border-radius: 0.45rem;
       padding: 0.75rem;
       /* cursor: pointer; */
-      cursor: url('cursor.png'), auto;
+      cursor: pointer;
     }
   }
   
@@ -137,7 +139,7 @@ main {
       padding: .75rem;
       border-radius: 50%;
       /* cursor: pointer; */
-      cursor: url('cursor.png'), auto;
+      cursor: pointer;
   
       &:hover {
         background-color: rgba(255,255,255,0.3);
@@ -172,10 +174,12 @@ main {
   @media (width < 650px) {
     .content {
       & .title        { font-size: 0.9rem; }
-      & .description  { font-size: 0.65rem; }
-      & button        { font-size: 0.7rem; }
+      & .description  { font-size: 0.55rem; }
+      & button        { font-size: 0.6rem; }
     }
     .item {
+      overflow-x: hidden;
+      overflow-y: hidden;
       width: 130px;
       height: 220px;
   
@@ -189,27 +193,30 @@ main {
   
 /* CSS for main div*/
 
+#main1 {
+  position: relative;
+  width: 100%;
+}
+
+
 /* Media query for smaller screens */
 @media only screen and (max-width: 768px) {
-    #main {
-        margin-left: 40px; /* Remove left margin to prevent overlap */
+    #main1 {
+        width: 100vw;
+        margin-left: 50px;
+         /* Remove left margin to prevent overlap */
+    }
+    main {
+      width: 100vw;
+    }
+    body {
+      width: 100vw;
     }
 }
 
-/* Media queries for responsiveness of navbar */
-@media only screen and (max-width: 600px) {
-nav {
-flex-direction: column; /* Stack nav links vertically on smaller screens */
-align-items: center; /* Center nav links */
-}
 
-nav a {
-margin: 5px 0; /* Add space between nav links */
-}
-}
 
 nav {
-   
     display: flex;
     justify-content: space-around;
     padding: 10px;
@@ -243,24 +250,19 @@ nav a:hover {  /* Styling individual navbar elements*/
 
  @-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
 
-
-
-
-
-#main1 {
-  position: relative;
-  width: 100%;
-  /* Adjusted padding for better responsiveness */
-  /* padding: 0 5%;  */
-  /* margin-left: 60px; */
-  /* margin-top: 740px; */
-}
-
+/* Media queries for responsiveness of navbar */
 @media only screen and (max-width: 600px) {
-  #main1 {
-    width: 140%;
+  nav {
+  width: 100%;
+  flex-direction: column; /* Stack nav links vertically on smaller screens */
+  align-items: center; /* Center nav links */
   }
-}
+  
+  nav a {
+  margin: 5px 0; /* Add space between nav links */
+  }
+  }
+
 
 p {
   font-size: 25px;
@@ -321,7 +323,7 @@ p {
     z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   div.scroll-container {
       min-height: 25vh;
       max-height: 25vh; /* Adjust the height as needed for smaller screens */
