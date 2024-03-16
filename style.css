@@ -308,7 +308,7 @@ p {
 
  div.scroll-container {
     background-color: #1D1B31;
-    min-height: 35vh;
+    min-height: 15vw;
     max-height: fit-content;
     overflow-x: scroll;
     border-radius: 15px;
@@ -331,6 +331,13 @@ display: none; /* Chrome, Safari, Opera */
 }
 }
 
+div.scroll-container img {
+  height: 20vw;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+}
 
 
 
@@ -351,13 +358,6 @@ display: none; /* Chrome, Safari, Opera */
 } */
 
 
-div.scroll-container img {
-    max-height: fit-content;
-    max-width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: inline-block;
-}
 
 .shimmer-placeholder {
   position: relative;

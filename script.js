@@ -105,7 +105,8 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           const image = document.createElement('img');
           image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
           image.alt = series.name;
-          image.style.height = "35vh"; // Adjust the height as needed
+          //image.style.height = "35vw"; // Adjust the height as needed
+          //image.style.width = "35vw"; 
   
           image.addEventListener('click', () => {
             fetchAndDisplaySeriesEpisodes(series.id);
