@@ -308,7 +308,7 @@ p {
 
  div.scroll-container {
     background-color: #1D1B31;
-    min-height: 15vw;
+    min-height: 35vh;
     max-height: fit-content;
     overflow-x: scroll;
     border-radius: 15px;
