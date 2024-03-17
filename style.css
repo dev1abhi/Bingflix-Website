@@ -61,7 +61,7 @@
   
     &:nth-child(3) { left: 40%;  }
     &:nth-child(4) { left: calc(40% + 220px); }
-    &:nth-child(5) { left: calc(40% + 440px); }
+    &:nth-child(5) { left: calc(40% + 440px); opacity: 1;}
     &:nth-child(6) { left: calc(40% + 660px); opacity: 0; }
 
 

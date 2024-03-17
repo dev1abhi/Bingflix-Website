@@ -185,7 +185,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
   });
   
    
-    
+  let a = 6;
   const slider = document.querySelector('.slider');
   function activate(e) {
     let inx=0;
@@ -194,6 +194,15 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
 
     e.target.matches('.next') && slider.append(items[0])
     e.target.matches('.prev') && slider.prepend(items[items.length-1]);
+
+    
+
+    items.forEach(item => {
+      item.style.opacity = 1;
+  });  
+    document.querySelector(`.slider .item:nth-child(${a})`).style.opacity = 0;
+
+    
 
 
     if (e.target.matches('.next'))
@@ -205,7 +214,11 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
     // Make all movie items visible
     items.forEach(item => {
         item.style.opacity = 1;
-    });
+    });    
+
+    document.querySelector(`.slider .item:nth-child(6)`).style.opacity = 0;
+
+
 });
 
 nav.addEventListener('mouseleave', () => {
@@ -213,12 +226,13 @@ nav.addEventListener('mouseleave', () => {
     items.forEach((item, index) => {
         if (  index==inx ) {
             item.style.opacity = 1;
-           
         }
         else
         item.style.opacity = 0;
     });
 });
+
+//a=a-1;
 }
 document.addEventListener('click',activate,false);
 
