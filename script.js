@@ -184,7 +184,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
       }
   });
   
-   
+  document.addEventListener('DOMContentLoaded', function() {
   let a = 6;
   const slider = document.querySelector('.slider');
   function activate(e) {
@@ -235,6 +235,7 @@ nav.addEventListener('mouseleave', () => {
 //a=a-1;
 }
 document.addEventListener('click',activate,false);
+  });
 
 
 
