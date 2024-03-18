@@ -29,6 +29,10 @@ main
   height: 35vw;
 }
 
+#seriesIframe{
+  height: 35vw;
+}
+
 @media (width < 650px) {
   #videoPlayer {
     height: 55vw;
@@ -39,20 +43,17 @@ main
     height: 55vw;
   }
 
+  #seriesIframe{
+    height: 55vw;
+  }
 
 
 }
 
-
-
-
-#buttons
-{
-  margin-top: 5%;
-}
 
 button 
 {
+  margin-top: 5%;
   border-radius: 1.2rem;
   width: 20%;
   padding: 1rem;
