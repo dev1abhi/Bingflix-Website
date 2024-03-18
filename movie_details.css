@@ -20,6 +20,32 @@ main
   padding-left: 80px;
 }
 
+#videoPlayer {
+  height: 35vw;
+}
+
+#movieIframe
+{
+  height: 35vw;
+}
+
+@media (width < 650px) {
+  #videoPlayer {
+    height: 55vw;
+  }
+  
+  #movieIframe
+  {
+    height: 55vw;
+  }
+
+
+
+}
+
+
+
+
 #buttons
 {
   margin-top: 5%;
@@ -31,7 +57,7 @@ button
   width: 20%;
   padding: 1rem;
   font-family: fantasy;
-  font-size: 1rem;
+  font-size: 1.5vw;
 
   cursor: pointer;
   background-color: #f4f3ff;
@@ -373,7 +399,8 @@ margin: 18px
   background-color: #1f121200;
   padding: 0.2em 0.4em;
   border-radius: 0.2em;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
+  font-size: 1.2vw;
 }
 
 .markdown-div pre {
