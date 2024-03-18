@@ -23,7 +23,7 @@ function getQueryVariable(variable) {
   async function searchMovies(query) {
     const apiKey = '68e094699525b18a70bab2f86b1fa706'; // Replace 'YOUR_API_KEY' with your actual TMDb API key
     // const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
-    const url = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}&include_adult=true`
+    const url = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}&include_adult=false`
 
     try {
       const response = await fetch(url);
@@ -43,28 +43,37 @@ function getQueryVariable(variable) {
       return;
     }
 
-    results.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('movie');
-      
-        const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://via.placeholder.com/200x300?text=No+Poster+Available';
-        const imgElement = document.createElement('img');
-        imgElement.src = posterPath;
-        imgElement.alt = movie.title;
-        imgElement.addEventListener('click', () => {
-            handlePosterClick(movie.media_type,movie.id);
-        });
-        
-        movieElement.appendChild(imgElement);
-        
-        const h2Element = document.createElement('h2');
-        h2Element.textContent = `${movie.title} (${getReleaseDate(movie)})`;
-        movieElement.appendChild(h2Element);
-      
-        resultsContainer.appendChild(movieElement);
-      });   
-  }
+  results.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.classList.add('item');
 
+    // Determine if it's a movie or a TV series
+    const mediaType = item.media_type === 'movie' ? 'Movie' : 'TV Series';
+    
+    // Create a transparent box to indicate the media type
+    const mediaTypeBox = document.createElement('div');
+    mediaTypeBox.classList.add('media-type-box');
+    mediaTypeBox.textContent = mediaType;
+    itemElement.appendChild(mediaTypeBox);
+
+    // Poster
+    const posterPath = item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : 'https://via.placeholder.com/200x300?text=No+Poster+Available';
+    const imgElement = document.createElement('img');
+    imgElement.src = posterPath;
+    imgElement.alt = item.title;
+    imgElement.addEventListener('click', () => {
+      handlePosterClick(item.media_type, item.id);
+    });
+    itemElement.appendChild(imgElement);
+
+    // Title and Release Year
+    const h2Element = document.createElement('h2');
+    h2Element.textContent = `${item.title || item.name} (${getReleaseDate(item)})`;
+    itemElement.appendChild(h2Element);
+
+    resultsContainer.appendChild(itemElement);
+  });
+}
   // Function to handle poster click event to redirect to movie_details
   function handlePosterClick(mediaType, mediaId) {
     if (mediaType === 'movie') {
@@ -76,9 +85,17 @@ function getQueryVariable(variable) {
     }
   }
   
-  function getReleaseDate(movie)
-  {
-    const releaseDate = movie.release_date;
-    const date = new Date(releaseDate);
-    return date.getFullYear();
+  function getReleaseDate(item) {
+    let releaseDate;
+    if (item.media_type === 'movie') {
+      releaseDate = item.release_date;
+    } else if (item.media_type === 'tv') {
+      releaseDate = item.first_air_date;
+    }
+    if (releaseDate) {
+      const date = new Date(releaseDate);
+      return date.getFullYear();
+    } else {
+      return 'N/A';
+    }
   }

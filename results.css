@@ -12,25 +12,25 @@ body {
     justify-content: center;
   }
   
-  .movie {
+  .item {
     width: 200px;
     margin: 10px;
     text-align: center;
   }
   
-  .movie img {
+  .item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
   }
   
-  .movie h2 {
+  .item h2 {
     margin-top: 10px;
     font-size: 16px;
   }
   
   @media (max-width: 600px) {
-    .movie {
+    .item {
       width: calc(50% - 20px);
     }
   }
