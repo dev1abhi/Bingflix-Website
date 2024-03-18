@@ -66,6 +66,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
     
           data.results.forEach(movie => {
             const image = document.createElement('img');
+            image.classList.add('card-image');
             image.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
             image.alt = movie.title;
             // image.style.width = "350px"; // Adjust the width as needed
@@ -108,13 +109,10 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
   
         data.results.forEach(series => {
           const image = document.createElement('img');
+          image.classList.add('card-image');
           image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
           image.alt = series.name;
-          //image.style.height = "35vh"; // Adjust the height as needed
-          //image.style.width = "35vw"; 
-
-        
-  
+    
           image.addEventListener('click', () => {
             fetchAndDisplaySeriesEpisodes(series.id);
           });
@@ -352,7 +350,7 @@ function searchMovies() {
 
  // Function to adjust image heights based on window width
  function adjustImageHeights() {
-  const images = document.querySelectorAll('img'); // Select all images
+  const images = document.querySelectorAll('.card-image'); // Select all images
 
   images.forEach(image => {
       if (window.innerWidth <= 768) {
