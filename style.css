@@ -645,3 +645,8 @@ div.scroll-container img {
     display: none;
   }
   }
+
+
+  .card-image {
+    transition: transform 0.3s ease-in-out;
+}

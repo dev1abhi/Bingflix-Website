@@ -46,6 +46,7 @@ function getQueryVariable(variable) {
   results.forEach(item => {
     const itemElement = document.createElement('div');
     itemElement.classList.add('item');
+    itemElement.style.position = 'relative';
 
     // Determine if it's a movie or a TV series
     const mediaType = item.media_type === 'movie' ? 'Movie' : 'TV Series';
@@ -65,6 +66,18 @@ function getQueryVariable(variable) {
       handlePosterClick(item.media_type, item.id);
     });
     itemElement.appendChild(imgElement);
+
+     // Rating
+     const ratingElement = document.createElement('div');
+     ratingElement.classList.add('tmdb-rating');
+     ratingElement.textContent = `${item.vote_average.toFixed(1)} ${getRatingStars(item.vote_average)}`;
+     ratingElement.style.position = 'absolute'; // Set position to absolute
+     ratingElement.style.top = '20px'; // Position at the top
+     ratingElement.style.left = '0'; // Position at the left
+     ratingElement.style.background = ''; // Example background color
+     ratingElement.style.padding = '5px 10px'; // Example padding
+     itemElement.appendChild(ratingElement);
+ 
 
     // Title and Release Year
     const h2Element = document.createElement('h2');
@@ -98,4 +111,10 @@ function getQueryVariable(variable) {
     } else {
       return 'N/A';
     }
+  }
+
+  function getRatingStars(rating) {
+    const roundedRating = Math.round(rating / 2); // Convert TMDB rating scale (0-10) to a 5-star scale
+    const stars = '★'.repeat(roundedRating) // Use Unicode characters for stars
+    return stars;
   }

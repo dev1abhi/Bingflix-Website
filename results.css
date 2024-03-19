@@ -21,7 +21,8 @@ body {
   .item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 1.2rem;
+    cursor: pointer;
   }
   
   .item h2 {
@@ -35,3 +36,21 @@ body {
     }
   }
   
+  .tmdb-rating {
+    position: absolute;
+    margin-top: -1px;
+    color: #ffc107; /* Yellow color for stars */
+    font-size: 0.6rem; /* Font size of stars */
+    background-color: rgba(0, 0, 0, 0.579);
+    width: fit-content;
+    border-radius: 1.2rem;
+    font-weight: bolder;
+  }
+
+
+  .item {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .item:hover {
+    transform: scale(1.05);
+  }
