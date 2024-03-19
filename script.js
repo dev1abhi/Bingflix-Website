@@ -116,6 +116,15 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           image.classList.add('card-image');
           image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
           image.alt = series.name;
+
+          image.classList.add('card-image');
+               image.addEventListener('mouseenter', () => {
+                 image.style.transform = 'scale(1.1)';
+                 });
+               image.addEventListener('mouseleave', () => {
+                 image.style.transform = 'scale(1)';
+                });
+
     
           image.addEventListener('click', () => {
             fetchAndDisplaySeriesEpisodes(series.id);
