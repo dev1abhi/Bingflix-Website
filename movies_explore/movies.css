@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    padding: 0;
+    font-family: "Sunflower";
+  }
+  
+  .fullscreen {
+    width: 100vw;
+    height: fit-content;
+    background: #000000f7;
+  }
+  .fullscreen .container {
+    padding: 15px;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .fullscreen .container .card {
+    overflow: hidden;
+    margin: 5vw;
+    width: 17%;
+    height: 25vw;
+    background: #232323;
+    box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.19);
+    transition: 0.6s;
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+  }
+  .fullscreen .container .card:hover {
+    transform: translateY(-15px);
+    box-shadow: 1px 12px 34px rgba(0, 0, 0, 0.31);
+  }
+  .fullscreen .container .card:hover .sinopse {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+  .fullscreen .container .card:hover .sinopse .view {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: 0.6s;
+    transition-delay: 1s;
+  }
+  .fullscreen .container .card:hover .sinopse .content-sinopse .text {
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
+  .fullscreen .container .card:hover .sinopse .content-sinopse .title {
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  .fullscreen .container .card:hover .date {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .fullscreen .container .card:hover .content {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .fullscreen .container .card .date {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    transition: 0.8s;
+  }
+  .fullscreen .container .card .date .tv_ico img {
+    width: 12px;
+    vertical-align: baseline;
+    margin-left: 6px;
+  }
+  .fullscreen .container .card .content {
+    transition: 0.8s;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-end;
+    padding: 25px 25px 50px 25px;
+  }
+  .fullscreen .container .card .content .title {
+    width: 100%;
+    color: #fff;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 12px;
+  }
+  .fullscreen .container .card .content .text {
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .fullscreen .container .card .sinopse {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 25px 25px 50px 25px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-weight: 300;
+    opacity: 0;
+    transition: 0.8s;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .fullscreen .container .card .sinopse iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-left: -30px;
+    height: 260px;
+  }
+  .fullscreen .container .card .sinopse .view {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    font-family: poppins;
+    color: #fff;
+    font-size: 14px;
+    border-bottom: 1px solid #fff;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: 0.6s;
+    cursor: pointer;
+  }
+  .fullscreen .container .card .sinopse .content-sinopse .title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    transform: translateY(-100%);
+    transition: 0.6s;
+  }
+  .fullscreen .container .card .sinopse .content-sinopse .text {
+    transform: translateY(100%);
+    transition: 0.6s;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .fullscreen .container .card_1 {
+    background: gray;
+  }
+  .fullscreen .container .card_2 {
+    background: gray;
+  }
+  .fullscreen .container .card_3 {
+    background: gray;
+  }
+  
+ .tagline{
+    color: #fff;
+    font-weight: 300;
+ }
+
+
+
+  @media (min-width: 580px) and (max-width: 992px) {
+    .fullscreen {
+      height: auto;
+    }
+    .fullscreen .container {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+    .fullscreen .container .card {
+      overflow: hidden;
+      width: 24%;
+      height: 34.9vw;
+      background: #fff;
+      box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.19);
+      transition: 0.6s;
+      border-radius: 2px;
+      position: relative;
+      display: flex;
+      margin-bottom: 10%;
+    }
+    .fullscreen .container .card:nth-child(-n+2) {
+      margin-top: 10%;
+    }
+    .fullscreen .container .card .content .title {
+      width: 100%;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 36px;
+      margin-bottom: 12px;
+    }
+    .fullscreen .container .card .content .text {
+      width: 100%;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .fullscreen .container .card .sinopse {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 25px 25px 50px 25px;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fff;
+      font-weight: 300;
+      opacity: 0;
+      transition: 0.8s;
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .fullscreen .container .card .sinopse iframe {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      margin-left: -30px;
+      height: 260px;
+    }
+    .fullscreen .container .card .sinopse .view {
+      position: absolute;
+      bottom: 15px;
+      right: 25px;
+      color: #fff;
+      font-size: 14px;
+      border-bottom: 1px solid #fff;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: 0.6s;
+      cursor: pointer;
+    }
+    .fullscreen .container .card .sinopse .content-sinopse .title {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transform: translateY(-100%);
+      transition: 0.6s;
+    }
+    .fullscreen .container .card .sinopse .content-sinopse .text {
+      transform: translateY(100%);
+      transition: 0.6s;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+      font-size: 14px;
+    }
+    .fullscreen .container .card_1 {
+      background: url("../assets/dhoni.jpg") no-repeat center/cover;
+    }
+    .fullscreen .container .card_2 {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.98)), url("https://w.wallhaven.cc/full/5d/wallhaven-5dpo51.jpg") no-repeat 45%/cover;
+    }
+    .fullscreen .container .card_3 {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.88)), url("https://w.wallhaven.cc/full/43/wallhaven-43y676.jpg") no-repeat center/cover;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 580px) {
+    .fullscreen {
+      height: auto;
+    }
+    .fullscreen .container {
+      flex-wrap: wrap;
+    }
+    .fullscreen .container .card {
+      overflow: hidden;
+      width: 50%;
+      height: 71.2vw;
+      background: #fff;
+      box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.19);
+      transition: 0.6s;
+      border-radius: 2px;
+      position: relative;
+      display: flex;
+      margin-bottom: 10%;
+    }
+    .fullscreen .container .card .content .title {
+      width: 100%;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 36px;
+      margin-bottom: 12px;
+    }
+    .fullscreen .container .card .content .text {
+      width: 100%;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .fullscreen .container .card .sinopse {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 25px 25px 50px 25px;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fff;
+      font-weight: 300;
+      opacity: 0;
+      transition: 0.8s;
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .fullscreen .container .card .sinopse iframe {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      margin-left: -30px;
+      height: 260px;
+    }
+    .fullscreen .container .card .sinopse .view {
+      position: absolute;
+      bottom: 15px;
+      right: 25px;
+      color: #fff;
+      font-size: 14px;
+      border-bottom: 1px solid #fff;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: 0.6s;
+      cursor: pointer;
+    }
+    .fullscreen .container .card .sinopse .content-sinopse {
+      pointer-events: none;
+    }
+    .fullscreen .container .card .sinopse .content-sinopse .title {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transform: translateY(-100%);
+      transition: 0.6s;
+    }
+    .fullscreen .container .card .sinopse .content-sinopse .text {
+      pointer-events: none;
+      transform: translateY(100%);
+      transition: 0.6s;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+      font-size: 14px;
+    }
+    .fullscreen .container .card_1 {
+      background: url("../assets/dhoni.jpg") no-repeat center/cover;
+    }
+    .fullscreen .container .card_2 {
+      background: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-539333.png") no-repeat 45%/cover;
+    }
+    .fullscreen .container .card_3 {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.88)), url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-5379.png") no-repeat center/cover;
+    }
+  }

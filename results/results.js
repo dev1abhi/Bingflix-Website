@@ -90,9 +90,9 @@ function getQueryVariable(variable) {
   // Function to handle poster click event to redirect to movie_details
   function handlePosterClick(mediaType, mediaId) {
     if (mediaType === 'movie') {
-      window.location.href = `movie_details.html?type=movie&id=${mediaId}`;
+      window.location.href = `../movie_details/movie_details.html?type=movie&id=${mediaId}`;
     } else if (mediaType === 'tv') {
-      window.location.href = `series_details.html?type=tv&id=${mediaId}`;
+      window.location.href = `../series_details/series_details.html?type=tv&id=${mediaId}`;
     } else {
       console.error('Unknown media type');
     }

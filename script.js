@@ -97,7 +97,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
      // Function to handle poster click event
      function handlePosterClick(movieId) {
       // Redirect to movie details page with movie ID as URL parameter
-      window.location.href = `movie_details.html?id=${movieId}`;
+      window.location.href = `movie_details/movie_details.html?id=${movieId}`;
   }
 
   function fetchAndDisplaySeries(url, containerId) {
@@ -141,7 +141,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
   
   function fetchAndDisplaySeriesEpisodes(seriesId) {
     // Redirect to series details page with series ID as URL parameter
-    window.location.href = `series_details.html?id=${seriesId}`;
+    window.location.href = `series_details/series_details.html?id=${seriesId}`;
   }
   
     
@@ -182,7 +182,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
               content.innerHTML = `
                   <h2 class='title'>${movie.title}</h2>
                   <p class='description'>${movie.overview}</p>
-                  <a href=movie_details.html?id=${movie.id} class="watch-now-button">Watch Now</a>
+                  <a href=movie_details/movie_details.html?id=${movie.id} class="watch-now-button">Watch Now</a>
               `;
   
               const nav = document.querySelector('.nav');
@@ -357,7 +357,7 @@ function searchMovies() {
     alert("Please enter at least 3 characters for search.");
     return;
   }
-  const url = `results.html?query=${query}`;
+  const url = `results/results.html?query=${query}`;
   window.location.href = url;
 }
 

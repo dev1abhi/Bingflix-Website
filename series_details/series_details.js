@@ -222,6 +222,6 @@ function searchSeries() {
       alert("Please enter at least 3 characters for search.");
       return;
     }
-    const url = `results.html?query=${query}`;
+    const url = `../results/results.html?query=${query}`;
     window.location.href = url;
   }
