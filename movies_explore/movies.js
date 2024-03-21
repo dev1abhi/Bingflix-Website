@@ -213,3 +213,7 @@ cards.forEach(function(card) {
         });
     });
 });
+
+function goToAnotherLocation() {
+    window.location.href = '../index.html';
+}
