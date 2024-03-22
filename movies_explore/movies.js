@@ -1,7 +1,8 @@
 document.cookie = "name=value; SameSite=None; Secure";
 // Define your TMDB API key
 const apiKey = '68e094699525b18a70bab2f86b1fa706';
-let currentPage = 1; // Example: current page is 7
+//let currentPage = 1; // Example: current page is 7
+let currentPage = parseInt(localStorage.getItem('currentPage')) || 1;
 const totalPages = 20; // Example: total number of pages
   
 // Function to fetch trending movies from TMDB API with pagination support
@@ -141,9 +142,12 @@ cards.forEach(function(card) {
       prevPageButton.id = 'prevPage';
       paginationContainer.appendChild(prevPageButton);
   
+      console.log(currentPage);//1
+      console.log(totalPages);//20
+      console.log(Math.min(totalPages, currentPage + 1));//11
       // Add number buttons dynamically based on current page and total pages
-      for (let i = Math.max(1, currentPage - 1); i <= Math.min(totalPages, currentPage + 1); i++) {
-          const pageButton = document.createElement('button');
+      for (let i = Math.max(1, currentPage-1); i <= Math.min(totalPages, currentPage + 1); i++) { 
+        const pageButton = document.createElement('button');
           pageButton.textContent = i;
           pageButton.classList.add('pageBtn');
           pageButton.dataset.page = i;
@@ -167,6 +171,7 @@ cards.forEach(function(card) {
   }
   
   // Function to handle pagination button clicks using event delegation
+  
   document.querySelector('.pagination').addEventListener('click', (event) => {
       if (event.target.classList.contains('pageBtn')) {
           const pageNum = parseInt(event.target.dataset.page);
@@ -195,10 +200,16 @@ cards.forEach(function(card) {
         fillCardsWithPage(currentPage);
     }
   });
+
+
+
+
   
   // Initial page load
   updatePaginationButtons();
   fillCardsWithPage(currentPage);
+  
+
 
 
 
@@ -215,5 +226,13 @@ cards.forEach(function(card) {
 });
 
 function goToAnotherLocation() {
+    currentPage=1;
     window.location.href = '../index.html';
 }
+
+function saveCurrentPage() {
+    localStorage.setItem('currentPage', currentPage);
+}
+
+// Call saveCurrentPage whenever currentPage changes
+window.addEventListener('pagehide', saveCurrentPage);
