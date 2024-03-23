@@ -199,10 +199,12 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
   document.addEventListener('DOMContentLoaded', function() {
   let a = 6;
   const slider = document.querySelector('.slider');
+  const nav = document.querySelector('.nav');
+
   function activate(e) {
     let inx=0;
     const items = document.querySelectorAll('.item');
-    const nav = document.querySelector('.nav');
+    
 
     e.target.matches('.next') && slider.append(items[0])
     e.target.matches('.prev') && slider.prepend(items[items.length-1]);
@@ -246,7 +248,8 @@ nav.addEventListener('mouseleave', () => {
 
 //a=a-1;
 }
-document.addEventListener('click',activate,false);
+
+nav.addEventListener('click',activate,false);
   });
 
 
@@ -259,16 +262,16 @@ closeBtn.addEventListener("click", ()=>{
   sidebar.classList.toggle("open");
   menuBtnChange();//calling the function(optional)
 });
-searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search icon
   sidebar.classList.toggle("open");
   menuBtnChange(); //calling the function(optional)
 });
 // following are the code to change sidebar button(optional)
 function menuBtnChange() {
  if(sidebar.classList.contains("open")){
-   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the icons class
  }else {
-   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the icons class
  }
 }
 
