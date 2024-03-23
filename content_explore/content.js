@@ -5,32 +5,61 @@ const apiKey = '68e094699525b18a70bab2f86b1fa706';
 let currentPage = parseInt(localStorage.getItem('currentPage')) || 1;
 const totalPages = 20; // Example: total number of pages
 let contentType="";
+let Rank="";
+let Region="";
 
 document.addEventListener("DOMContentLoaded", function() {
     // Get the query parameter from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const type = urlParams.get('type');
+    const rank=urlParams.get('rank');
+    const region = urlParams.get('region');
+    Rank=rank;
+    Region=region;
+    //console.log(rank);
 
     // Fetch data based on the type parameter
     if (type === 'movies') {
         contentType="movie";
-        fillCardsWithPageAndType(currentPage, 'movie');
-    } else if (type === 'series') {
+        fillCardsWithPageAndType(currentPage, 'movie',rank , region);
+    } else if (type === 'series' ) {
         contentType="tv";
-        fillCardsWithPageAndType(currentPage, 'tv');
-    } else {
-        // Handle the case where no type is specified
+        fillCardsWithPageAndType(currentPage, 'tv',rank , region);
+    } else{
+        
     }
 });
   
 // Function to fetch trending movies from TMDB API with pagination support
-async function fetchMoviesByPageAndType(page,type) {
-    const response = await fetch(`https://api.themoviedb.org/3/trending/${type}/week?api_key=${apiKey}&page=${page}`);
+async function fetchMoviesByPageAndType(page,type,rank,region) {
+    let response;
+    console.log(rank);
+    console.log(region);
+    if (rank==null && region==null) //trending US
+    { 
+    response = await fetch(`https://api.themoviedb.org/3/trending/${type}/week?api_key=${apiKey}&page=${page}`);
+    }
+    else if (rank=='topRanked' && region==null) //Top-rated US
+    {
+        console.log('yes')
+    response = await fetch(`https://api.themoviedb.org/3/${type}/top_rated?api_key=${apiKey}&page=${page}`);
+    }
+    else if (rank=='topRanked' && region == "KR") //Popular Korean
+    {
+    response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=ko-KR&region=KR&sort_by=popularity.desc&with_original_language=ko&page=${page}`)
+    }
+
+    else if (rank=='topRanked' && region == "IN") //Popular Indian
+    {
+    response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-IN&region=IN&sort_by=popularity.desc&with_original_language=hi&page=${page}`)
+    }
+
     const data = await response.json();
     return data.results;
 }
 
-// Function to fetch movie details including poster URLs from TMDB API
+// Function to fetch movie/series details including poster URLs from TMDB API
+//dont change this
 async function fetchMovieDetails(movieId,type) {
     const response = await fetch(`https://api.themoviedb.org/3/${type}/${movieId}?api_key=${apiKey}`);
     const data = await response.json();
@@ -38,9 +67,9 @@ async function fetchMovieDetails(movieId,type) {
 }
 
 // Function to dynamically fill the cards with movie data
-async function fillCardsWithPageAndType(page,type) {
+async function fillCardsWithPageAndType(page,type,rank,region) {
    
-    const movies = await fetchMoviesByPageAndType(page,type);
+    const movies = await fetchMoviesByPageAndType(page,type,rank,region);
     var movieDivs = document.querySelectorAll(".view.movie");
     const cards = document.querySelectorAll('.card');
 
@@ -186,26 +215,26 @@ cards.forEach(function(card) {
           if (!isNaN(pageNum) && pageNum !== currentPage) {
               currentPage = pageNum;
               updatePaginationButtons();
-              fillCardsWithPageAndType(currentPage,contentType);
+              fillCardsWithPageAndType(currentPage,contentType,Rank,Region);
           }
       } else if (event.target.id === 'prevPage' && currentPage > 1) {
           currentPage--;
           updatePaginationButtons();
-          fillCardsWithPageAndType(currentPage,contentType);
+          fillCardsWithPageAndType(currentPage,contentType,Rank,Region);
       } else if (event.target.id === 'nextPage' && currentPage < totalPages) {
           ++currentPage;
           updatePaginationButtons();
-          fillCardsWithPageAndType(currentPage,contentType);
+          fillCardsWithPageAndType(currentPage,contentType,Rank,Region);
       }
       else if (event.target.id === 'firstPage') {
         currentPage=1;
         updatePaginationButtons();
-        fillCardsWithPageAndType(currentPage,contentType);
+        fillCardsWithPageAndType(currentPage,contentType,Rank,Region);
     }
     else if (event.target.id === 'lastPage') {
         currentPage=20;
         updatePaginationButtons();
-        fillCardsWithPageAndType(currentPage,contentType);
+        fillCardsWithPageAndType(currentPage,contentType,Rank,Region);
     }
   });
 
