@@ -4,26 +4,43 @@ const apiKey = '68e094699525b18a70bab2f86b1fa706';
 //let currentPage = 1; // Example: current page is 7
 let currentPage = parseInt(localStorage.getItem('currentPage')) || 1;
 const totalPages = 20; // Example: total number of pages
+let contentType="";
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the query parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+
+    // Fetch data based on the type parameter
+    if (type === 'movies') {
+        contentType="movie";
+        fillCardsWithPageAndType(currentPage, 'movie');
+    } else if (type === 'series') {
+        contentType="tv";
+        fillCardsWithPageAndType(currentPage, 'tv');
+    } else {
+        // Handle the case where no type is specified
+    }
+});
   
 // Function to fetch trending movies from TMDB API with pagination support
-async function fetchMoviesByPage(page) {
-    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&page=${page}`);
+async function fetchMoviesByPageAndType(page,type) {
+    const response = await fetch(`https://api.themoviedb.org/3/trending/${type}/week?api_key=${apiKey}&page=${page}`);
     const data = await response.json();
     return data.results;
 }
 
 // Function to fetch movie details including poster URLs from TMDB API
-async function fetchMovieDetails(movieId) {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+async function fetchMovieDetails(movieId,type) {
+    const response = await fetch(`https://api.themoviedb.org/3/${type}/${movieId}?api_key=${apiKey}`);
     const data = await response.json();
     return data;
 }
 
 // Function to dynamically fill the cards with movie data
-async function fillCardsWithPage(page) {
-    //const movies = await fetchTrendingMovies();
-
-    const movies = await fetchMoviesByPage(page);
+async function fillCardsWithPageAndType(page,type) {
+   
+    const movies = await fetchMoviesByPageAndType(page,type);
     var movieDivs = document.querySelectorAll(".view.movie");
     const cards = document.querySelectorAll('.card');
 
@@ -51,7 +68,7 @@ async function fillCardsWithPage(page) {
 
 
         // Fetch movie details to get poster URL
-        const movieDetails = await fetchMovieDetails(movie.id);
+        const movieDetails = await fetchMovieDetails(movie.id,type);
         const posterUrl = `https://image.tmdb.org/t/p/w780${movieDetails.poster_path}`;
 
         // Set card background image to the poster URL
@@ -62,21 +79,20 @@ async function fillCardsWithPage(page) {
         
 
         // Assuming you have a function to extract YouTube trailer URL from TMDB data
-        const trailerUrl = await getYouTubeTrailerUrl(movie);
+        const trailerUrl = await getYouTubeTrailerUrl(movie,type);
 
-        console.log("trailers fetched");
+        //console.log("trailers fetched");
 
         // Set the iframe source to the YouTube trailer URL
         iframeElement.dataset.video = trailerUrl;
 
-        if (index==2)
-        console.log(iframeElement.dataset.video);
+       
     });
 }
 
 
-async function getYouTubeTrailerUrl(movie) {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`);
+async function getYouTubeTrailerUrl(movie,type) {
+    const response = await fetch(`https://api.themoviedb.org/3/${type}/${movie.id}/videos?api_key=${apiKey}`);
     const data = await response.json();
     
     // Filter out YouTube trailer
@@ -93,8 +109,6 @@ async function getYouTubeTrailerUrl(movie) {
     }
 }
 
-// Initial Call the function to fill the cards with data
-fillCardsWithPage(currentPage);
 
 
 // Get all elements with class "card"
@@ -102,29 +116,24 @@ var cards = document.querySelectorAll(".card");
 
 // Loop through each card element
 cards.forEach(function(card) {
-    // Add event listener for mouseenter
     card.addEventListener("mouseenter", function() {
-        // Get the iframe element within the card
         var iframe = this.querySelector('iframe');
-        // Get the value of the data-video attribute
         var vSrc = iframe.dataset.video;
-        // Set the src attribute of the iframe
-        iframe.src = vSrc;
+        if (vSrc!='null') {
+            iframe.src = vSrc;
+        } else {
+            iframe.src = "about:blank";
+            iframe.contentWindow.document.write("<div style='color: white;'>Trailer not found.</div>");
+        }
     });
 
-    // Add event listener for mouseleave
     card.addEventListener("mouseleave", function() {
-        // Get the iframe element within the card
         var iframe = this.querySelector('iframe');
-        // Remove the src attribute to stop the video
         iframe.removeAttribute('src');
     });
 });
 
 
-
-
-  
   // Function to update pagination buttons based on current page
   function updatePaginationButtons() {
       const paginationContainer = document.querySelector('.pagination');
@@ -171,48 +180,41 @@ cards.forEach(function(card) {
   }
   
   // Function to handle pagination button clicks using event delegation
-  
   document.querySelector('.pagination').addEventListener('click', (event) => {
       if (event.target.classList.contains('pageBtn')) {
           const pageNum = parseInt(event.target.dataset.page);
           if (!isNaN(pageNum) && pageNum !== currentPage) {
               currentPage = pageNum;
               updatePaginationButtons();
-              fillCardsWithPage(currentPage);
+              fillCardsWithPageAndType(currentPage,contentType);
           }
       } else if (event.target.id === 'prevPage' && currentPage > 1) {
           currentPage--;
           updatePaginationButtons();
-          fillCardsWithPage(currentPage);
+          fillCardsWithPageAndType(currentPage,contentType);
       } else if (event.target.id === 'nextPage' && currentPage < totalPages) {
           ++currentPage;
           updatePaginationButtons();
-          fillCardsWithPage(currentPage);
+          fillCardsWithPageAndType(currentPage,contentType);
       }
       else if (event.target.id === 'firstPage') {
         currentPage=1;
         updatePaginationButtons();
-        fillCardsWithPage(currentPage);
+        fillCardsWithPageAndType(currentPage,contentType);
     }
     else if (event.target.id === 'lastPage') {
         currentPage=20;
         updatePaginationButtons();
-        fillCardsWithPage(currentPage);
+        fillCardsWithPageAndType(currentPage,contentType);
     }
   });
 
 
 
-
-  
   // Initial page load
   updatePaginationButtons();
-  fillCardsWithPage(currentPage);
+
   
-
-
-
-
 
   document.addEventListener("DOMContentLoaded", function() {
     var movieDivs = document.querySelectorAll(".view.movie");
@@ -220,7 +222,24 @@ cards.forEach(function(card) {
         div.addEventListener("click", function() {
             // Redirect to another internal page with movieId as query parameter
             const movieId = div.dataset.movieId; // Assuming you have a dataset property containing the movieId
-            window.location.href = `../movie_details/movie_details.html?id=${movieId}`;
+
+            // Redirect based on contentType
+            switch (contentType) {
+                case 'movie':
+                    //const movieId = div.dataset.movieId;
+                    window.location.href = `../movie_details/movie_details.html?id=${movieId}`;
+                    break;
+                case 'tv':
+                    //const movieId = div.dataset.movieId;
+                    window.location.href = `../series_details/series_details.html?id=${movieId}`;
+                    break;
+                // Add cases for other content types if needed
+                default:
+                    // Redirect to a default page if contentType is unknown
+            }
+        
+        
+        
         });
     });
 });
