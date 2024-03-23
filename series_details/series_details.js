@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const description = document.getElementById('description');
 
             poster.src = `https://image.tmdb.org/t/p/w780${data.backdrop_path}`;
-            title.textContent = data.title;
+            title.textContent = data.name;
             description.textContent = data.overview;
             
             fetchCastDetails();

@@ -1,46 +1,4 @@
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     function cloneItem() {
-
-//         var series = document.getElementById("series");
-//         var seriesImages = Array.from(series.getElementsByTagName("img"));
-//         var initialCount1 = seriesImages.length;
-
-
-
-
-//         var movies = document.getElementById("movies");
-//         var movieImages = Array.from(movies.getElementsByTagName("img"));
-//         var initialCount = movieImages.length;
-
-//         for(var i = 0; i < initialCount; i++) {
-//             var clonedItem = movieImages[i].cloneNode(true);
-//             movies.appendChild(clonedItem);
-            
-//         }
-       
-
-//         for(var i = 0; i < initialCount1; i++) {
-//             var clonedItem = seriesImages[i].cloneNode(true);
-//             series.appendChild(clonedItem);
-//         }
-
-
-//     }
-
-//     for(var i = 0; i < 3; i++) {
-//         cloneItem();
-//     }
-
-
-//     for(var i = 0; i < 3; i++) {
-//         cloneItem();
-//     }
-
-// });
-
-
-
 const apiKey = '68e094699525b18a70bab2f86b1fa706';
 const now_playing = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
 const top_rated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
@@ -49,7 +7,7 @@ const nowPlayingIndia = `https://api.themoviedb.org/3/movie/now_playing?api_key=
 const bollywood = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=hi-IN&region=IN&with_original_language=hi`;
 
 const top_rated_series = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
-const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=hi-IN&region=IN&sort_by=popularity.desc&with_original_language=hi`;
+const korean_series = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=ko-KR&region=KR&sort_by=popularity.desc&with_original_language=ko`;
 
     function fetchAndDisplayMovies(url, containerId) {
 
@@ -70,6 +28,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
             image.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
             image.alt = movie.title;
             image.style.cursor ='pointer';
+            image.style.borderRadius='1.2rem';
 
             // Inside the loop
                image.classList.add('card-image');
@@ -94,7 +53,6 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
         .catch(error => console.error('Error fetching data:', error));
     }
 
-     // Function to handle poster click event
      function handlePosterClick(movieId) {
       // Redirect to movie details page with movie ID as URL parameter
       window.location.href = `movie_details/movie_details.html?id=${movieId}`;
@@ -117,6 +75,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
           image.src = `https://image.tmdb.org/t/p/w200${series.poster_path}`;
           image.alt = series.name;
           image.style.cursor ='pointer';
+          image.style.borderRadius='1.2rem';
 
           image.classList.add('card-image');
                image.addEventListener('mouseenter', () => {
@@ -156,12 +115,12 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
       // Series
       fetchAndDisplaySeries(now_airing, 'series');
       fetchAndDisplaySeries(top_rated_series, 'seriestr');
-      fetchAndDisplaySeries(bollywood_series, 'bollyseries');
+      fetchAndDisplaySeries(korean_series, 'koreanseries');
   });
 
 
 
-    //movies-slider
+    //populating movies slider with API Data
     document.addEventListener("DOMContentLoaded", async function() {
       try {
           const apiKey = '68e094699525b18a70bab2f86b1fa706';
@@ -196,6 +155,7 @@ const bollywood_series = `https://api.themoviedb.org/3/discover/tv?api_key=${api
       }
   });
   
+  //Slider Nav-bar logic , which controls the slider animation
   document.addEventListener('DOMContentLoaded', function() {
   let a = 6;
   const slider = document.querySelector('.slider');
@@ -313,7 +273,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //HANDLES PAUSING AND RESUMING OF ANIMATION ON HOVER AND NOT HOVER
 
-
 document.addEventListener("DOMContentLoaded", function() {
   // Get all the forward buttons, backward buttons, images, and scroll containers
   const fwButtons = document.querySelectorAll('.btf');
@@ -353,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
+//Searching movies thru query
 function searchMovies() {
   const query = document.getElementById('searchInput').value;
   if (query.length < 3) {
@@ -365,7 +324,7 @@ function searchMovies() {
 }
 
 
- // Function to adjust image heights based on window width
+ // Function to adjust image heights based on window width (responsiveness)
  function adjustImageHeights() {
   const images = document.querySelectorAll('.card-image'); // Select all images
 
