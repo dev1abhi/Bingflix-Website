@@ -141,13 +141,13 @@ cards.forEach(function(card) {
   
       // Add first page button
       const firstPageButton = document.createElement('button');
-      firstPageButton.textContent = 'First Page';
+      firstPageButton.textContent = 'First';
       firstPageButton.id = 'firstPage';
       paginationContainer.appendChild(firstPageButton);
   
       // Add previous page button
       const prevPageButton = document.createElement('button');
-      prevPageButton.textContent = 'Previous Page';
+      prevPageButton.textContent = 'Prev';
       prevPageButton.id = 'prevPage';
       paginationContainer.appendChild(prevPageButton);
   
@@ -168,13 +168,13 @@ cards.forEach(function(card) {
   
       // Add next page button
       const nextPageButton = document.createElement('button');
-      nextPageButton.textContent = 'Next Page';
+      nextPageButton.textContent = 'Next';
       nextPageButton.id = 'nextPage';
       paginationContainer.appendChild(nextPageButton);
   
       // Add last page button
       const lastPageButton = document.createElement('button');
-      lastPageButton.textContent = 'Last Page';
+      lastPageButton.textContent = 'Last';
       lastPageButton.id = 'lastPage';
       paginationContainer.appendChild(lastPageButton);
   }

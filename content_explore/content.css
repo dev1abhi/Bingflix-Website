@@ -400,3 +400,41 @@
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.88)), url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-5379.png") no-repeat center/cover;
     }
   }
+
+  .pagination {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    
+}
+
+.pagination button {
+  font-family: poppins;
+    padding: 8px 16px;
+    margin: 0 4px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #504a4a;
+}
+
+.pagination button:focus {
+    outline: none;
+}
+
+/* Style for the active page button */
+.pagination .pageBtn.active {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 1px solid #007bff;
+}
+
+/* Style for disabled buttons */
+.pagination button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
