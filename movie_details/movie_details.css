@@ -50,25 +50,32 @@ main
 
 }
 
-
-button 
-{
+.btn {
   margin-top: 5%;
-  border-radius: 1.2rem;
-  width: 20%;
-  padding: 1rem;
-  font-family: fantasy;
-  font-size: 1.5vw;
-
+  width: 14%;
+  font-weight: 800;
+  height: 45px;
+  font-family: 'poppins', sans-serif;
+  font-size: 1.2vw;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 1.1rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  background-color: #f4f3ff;
-  transition: background-color 0.3s ease; 
+  }
+
+.btn:hover {
+  background-color: #2a9aa2;
+      box-shadow: 0px 5px 20px rgba(91, 162, 167, 0.73);
+  color: #fff;
+  transform: translateY(-7px);
 }
 
-button:hover {
-  color: white;
-  background-color: rgb(7, 14, 42);
-}
+
 
 h1 
 {

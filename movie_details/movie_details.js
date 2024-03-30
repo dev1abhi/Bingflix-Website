@@ -1,3 +1,4 @@
+let ImdbId;
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -16,6 +17,26 @@ function switchEmbed(embedUrl) {
     iframe.src = embedUrl;
 }
 
+const movieId = getParameterByName('id');
+const apiKey = '68e094699525b18a70bab2f86b1fa706';
+const extidsUrl =  `https://api.themoviedb.org/3/movie/${movieId}/external_ids?api_key=${apiKey}`;
+async function getImdbIdAndEmbed(embedUrl)
+{
+    await fetch(extidsUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.imdb_id);
+                 
+                embedUrl=embedUrl+data.imdb_id;
+                console.log(embedUrl);
+                const iframe = document.getElementById('movieIframe');
+                iframe.src = embedUrl;
+
+
+            })
+         }
+
+
 document.addEventListener("DOMContentLoaded", function() {
    
     // Fetch movie details using movie ID from URL parameter
@@ -24,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
     const castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
     const videosUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
+
+   
+
+
 
     function fetchCastDetails() {
         fetch(castUrl)

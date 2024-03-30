@@ -99,15 +99,16 @@
       </div>
 
     <div id="buttons">
-        <button id="Trailerbtn">Watch Trailer</button>
+        <button id="Trailerbtn" class="btn">Watch Trailer</button>
 
-        <button onclick="switchEmbed('https://embed.smashystream.com/playere.php?tmdb=' + getParameterByName('id'))">Server 1</button>
+        <button class="btn"  onclick="switchEmbed('https://embed.smashystream.com/playere.php?tmdb=' + getParameterByName('id'))">Server SS</button>
 
-        <button onclick="switchEmbed('https://multiembed.mov/directstream.php?video_id=' + getParameterByName('id') + '&tmdb=1')">Server 2</button>
+        <button class="btn"onclick="switchEmbed('https://multiembed.mov/directstream.php?video_id=' + getParameterByName('id') + '&tmdb=1')">Server SE</button>
 
-        <button onclick="switchEmbed('https://vidsrc.xyz/embed/' + getParameterByName('id'))">Server 3</button>
+        <button class="btn" onclick="switchEmbed('https://vidsrc.xyz/embed/' + getParameterByName('id'))">Server VS</button>
         
-        
+        <button class="btn" onclick="getImdbIdAndEmbed('https://gomo.to/movie/')">Server DS</button>
+
         <!-- Add more buttons for additional embeds -->
     </div>
 

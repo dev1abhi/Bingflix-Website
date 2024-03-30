@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const seriesDetailsUrl = `https://api.themoviedb.org/3/tv/${seriesId}?api_key=${apiKey}`;
     const castUrl = `https://api.themoviedb.org/3/tv/${seriesId}/credits?api_key=${apiKey}`;
     const videosUrl = `https://api.themoviedb.org/3/tv/${seriesId}/videos?api_key=${apiKey}`;
-    const seasonsUrl = `https://api.themoviedb.org/3/tv/${seriesId}/seasons?api_key=${apiKey}`;
+    //const seasonsUrl = `https://api.themoviedb.org/3/tv/${seriesId}/seasons?api_key=${apiKey}`;
 
     function fetchCastDetails() {
         fetch(castUrl)
