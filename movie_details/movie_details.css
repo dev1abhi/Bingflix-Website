@@ -153,6 +153,22 @@ width: 100%
   margin: 5px; /* Add some spacing between images */
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px;
+  }
+  100% {
+    background-position: 1000px;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(to right, rgba(16, 32, 47, 0.1) 0%, rgba(16, 32, 47, 0.3) 50%, rgba(33, 100, 161, 0.1) 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+
 
  /* CSS for sidebar div*/
 
