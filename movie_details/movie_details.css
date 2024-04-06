@@ -63,7 +63,7 @@ main
   width: 10%;
   margin-left: 11px;
   font-weight: 800;
-  height: 45px;
+  height: 3.15vw;
   font-family: 'poppins', sans-serif;
   font-size: 1.2vw;
   text-transform: uppercase;
@@ -477,3 +477,327 @@ option
 }
 
 
+.paw-button {
+  --background: #1b3566;
+  --background-active: #FEE8F4;
+  --border: #f1eceb81;
+  --border-active: #EEC2DB;
+  --text: #e5d9d9;
+  --number: #9C9496;
+  --number-active: #000;
+  --heart-background: #fff;
+  --heart-background-active: #FEA5D7;
+  --heart-border: #C3C2C0;
+  --heart-border-active: #2B2926;
+  --heart-shadow-light: #FEE0F2;
+  --heart-shadow-dark: #EA5DAF;
+  --paw-background: #fff;
+  --paw-border: #201E1B;
+  --paw-shadow: #EEEDED;
+  --paw-inner: var(--heart-background-active);
+  --paw-shadow-light: var(--heart-shadow-light);
+  --paw-shadow-dark: var(--heart-shadow-dark);
+  --paw-clap-background: #FEF0A5;
+  --paw-clap-border: var(--paw-border);
+  --paw-clap-shadow: #FED75C;
+  --circle: #df3dce;
+  --circle-line: #000;
+  display: inline-flex;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  /* line-height: 19px; */
+  width: 10vw;
+  height: 3.3vw;
+  /* padding: 12px 16px; */
+  padding: 0.9vw 1.33vw; /* Adjusted from 12px 16px */
+  font-size: calc(0.9vw + 0.9vh); /* Responsive font size */
+}
+.paw-button:before {
+  content: "";
+  position: absolute;
+  display: block;
+  left: -2px;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  z-index: 1;
+  border-radius: 25px;
+  transition: background 0.45s, border-color 0.45s;
+  background: var(--background);
+  border: 2px solid var(--border);
+}
+.paw-button svg {
+  display: block;
+}
+.paw-button .text {
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform: translateZ(0);
+  z-index: 3;
+  margin-right: 3vw;
+  transition: width 0.25s;
+  width: var(--w, 60px);
+}
+.paw-button .text span,
+.paw-button .text svg {
+  transition: transform 0.15s ease-out, opacity 0.2s;
+  opacity: var(--o, 1);
+}
+
+/* text  beside heart */
+.paw-button .text span {
+  font-family: poppins;
+  display: block;
+  position: absolute;
+  left: 4vw;
+  top: -0.35vw;
+  font-size: 1.7vw;
+  transform: translateY(var(--y, 0));
+  color: var(--text);
+}
+
+/* heart */
+.paw-button .text svg {      
+  --background: var(--heart-background);
+  --border: var(--heart-border);
+  --shadow-light: transparent;
+  --shadow-dark: transparent;
+  width: 2vw;
+  height: 2vw;
+  /* margin-top: -1.1vw; */
+  transform: translateX(var(--x));
+}
+.paw-button > span {
+  display: block;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform: translateZ(0);
+  z-index: 2;
+  color: var(--number);
+}
+.paw-button .paws {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  z-index: 2;
+}
+.paw-button .paws svg {
+  position: absolute;
+  bottom: 0;
+  transition: transform 0.3s ease-out, opacity 0.2s;
+  opacity: var(--o, 0);
+  transform: translate(var(--x, 0), var(--y, 0));
+}
+
+/* paw 1 */
+.paw-button .paws svg.paw {
+  --x: -24px;
+  width: 3vw;
+  height: 3vw;
+  left: 2vw;
+}
+
+/* paw 2 */
+.paw-button .paws svg.paw-clap {
+  --x: 16px;
+  --y: 3vw;
+  --o: 1;
+  width: 3vw;
+  height: 2.5vw;
+  left: 2vw;
+}
+.paw-button .paws .paw-effect {
+  left: 26px;
+  top: 12px;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+}
+.paw-button .paws .paw-effect:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--circle);
+  transform: scale(var(--s, 0));
+  opacity: var(--o, 1);
+  transition: transform 0.15s ease 0.16s, opacity 0.2s linear 0.25s;
+}
+.paw-button .paws .paw-effect div {
+  width: 2px;
+  height: 6px;
+  border-radius: 1px;
+  left: 50%;
+  bottom: 50%;
+  margin-left: -1px;
+  position: absolute;
+  background: var(--circle-line);
+  transform: translateY(-24px) scaleX(0.7) scaleY(var(--s, 0));
+}
+.paw-button .paws .paw-effect div:before, .paw-button .paws .paw-effect div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: translate(var(--x, -22px), var(--y, 4px)) rotate(var(--r, -45deg)) scaleX(0.8) scaleY(var(--s, 0));
+}
+.paw-button .paws .paw-effect div:after {
+  --x: 22px;
+  --r: 45deg;
+}
+.paw-button .paws .paw-effect div,
+.paw-button .paws .paw-effect div:before,
+.paw-button .paws .paw-effect div:after {
+  opacity: var(--o, 1);
+  transform-origin: 50% 100%;
+  transition: transform 0.12s ease 0.17s, opacity 0.18s linear 0.21s;
+}
+.paw-button i {
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0 0 -2px;
+  opacity: var(--o, 0);
+  background: var(--b);
+  transform: translate(var(--x), var(--y)) scale(var(--s, 1));
+}
+.paw-button:not(.confetti):hover .text {
+  --o: 0;
+  --x: 12px;
+  --y: 8px;
+}
+.paw-button:not(.confetti):hover .paws svg.paw {
+  --o: 1;
+  --x: 0;
+}
+.paw-button.animation .text {
+  --o: 0;
+}
+.paw-button.animation .text svg {
+  --background: var(--heart-background-active);
+  --border: var(--heart-border-active);
+  --shadow-light: var(--heart-shadow-light);
+  --shadow-dark: var(--heart-shadow-dark);
+}
+.paw-button.animation .paws svg.paw {
+  --x: 0;
+  --o: 1;
+  transition-delay: 0s;
+  -webkit-animation: paw 0.45s ease forwards;
+          animation: paw 0.45s ease forwards;
+}
+.paw-button.animation .paws svg.paw-clap {
+  -webkit-animation: paw-clap 0.5s ease-in forwards;
+          animation: paw-clap 0.5s ease-in forwards;
+}
+.paw-button.animation .paws .paw-effect {
+  --s: 1;
+  --o: 0;
+}
+.paw-button.confetti i {
+  -webkit-animation: confetti 0.6s ease-out forwards;
+          animation: confetti 0.6s ease-out forwards;
+}
+.paw-button.confetti .paws svg.paw {
+  --o: 0;
+  transition: opacity 0.15s linear 0.2s;
+}
+.paw-button.liked {
+  --background: var(--background-active);
+  --border: var(--border-active);
+  width: 14vw;
+  font-family: poppins;
+}
+.paw-button.liked .text {
+  --w: 2vw;
+}
+.paw-button.liked .text svg {
+  --o: 1;
+}
+
+/* saved text */
+.paw-button.liked > span {
+  --number: var(--number-active);
+  font-size: 1.7vw;
+  margin-top: -0.3vw;
+  margin-left: -1.1vw;;
+
+}
+
+@-webkit-keyframes confetti {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes confetti {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes paw {
+  0% {
+    transform: translateX(var(--x));
+  }
+  35% {
+    transform: translateX(-16px);
+  }
+  55%, 70% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-12px);
+  }
+}
+@keyframes paw {
+  0% {
+    transform: translateX(var(--x));
+  }
+  35% {
+    transform: translateX(-16px);
+  }
+  55%, 70% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-12px);
+  }
+}
+@-webkit-keyframes paw-clap {
+  50%, 70% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes paw-clap {
+  50%, 70% {
+    transform: translate(0, 0);
+  }
+}
+
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
