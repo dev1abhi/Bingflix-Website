@@ -201,11 +201,11 @@
 
 
 /* Media query for smaller screens */
-@media only screen and (max-width: 1200px) {
+/* 
+@media only screen and (max-width: 200px) {
     #hnav_Content {
         width: 100vw;
         margin-left: 0px;
-         /* Remove left margin to prevent overlap */
     }
     #heroSection {
       width: 100vw;
@@ -214,6 +214,7 @@
       width: 100vw;
     }
 }
+ */
 
 
 
