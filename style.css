@@ -201,10 +201,10 @@
 
 
 /* Media query for smaller screens */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
     #hnav_Content {
         width: 100vw;
-        margin-left: 50px;
+        margin-left: 0px;
          /* Remove left margin to prevent overlap */
     }
     #heroSection {
@@ -224,11 +224,10 @@ nav {
     border-radius: 15px;
     border-style:solid;
     border-color: #63151500;
-
     background-color: #1d1b318c;
     border-left: transparent;
     border-right: transparent;
-    margin: 20px 0;
+    margin: 20px 10px; 
     text-decoration-color: rgba(240, 248, 255, 0.443);
     margin-bottom: 5rem;
 }
@@ -238,10 +237,9 @@ nav a {
     text-decoration: wavy;
     font-family: 'Press Start 2p';
     font-size: 0.8em;
-    padding: 5px;  
+    margin: 5px;
     border-radius: 5px;
-    margin: 10px; /** adds space between nav elements**/
-    
+     /** adds space between nav elements**/
 }
 
 nav a:hover {  /* Styling individual navbar elements*/
@@ -250,6 +248,13 @@ nav a:hover {  /* Styling individual navbar elements*/
 }
 
  @-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+
+ @media only screen and (max-width: 1000px) {
+
+  nav a {
+    font-size: 1.6vw;
+  }
+  }
 
 /* Media queries for responsiveness of navbar */
 @media only screen and (max-width: 600px) {
@@ -260,6 +265,7 @@ nav a:hover {  /* Styling individual navbar elements*/
   }
   
   nav a {
+  font-size: 14px;
   margin: 5px 0; /* Add space between nav links */
   }
   }
