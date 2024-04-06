@@ -191,6 +191,8 @@
     }
   }
 
+
+
   
 /* CSS for main div*/
 
@@ -198,7 +200,20 @@
   position: relative;
   width: 100%;
 }
+@media only screen and (max-width: 440px) {
+  #hnav_Content {
+      width: 115vw;
+      margin-left: 0px;
+  }
+}
 
+
+@media only screen and (max-width: 300px) {
+  #hnav_Content {
+      width: 165vw;
+      margin-left: 0px;
+  }
+}
 
 /* Media query for smaller screens */
 /* 
@@ -250,6 +265,9 @@ nav a:hover {  /* Styling individual navbar elements*/
 
  @-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
 
+
+ /* Media queries for responsiveness of navbar */
+
  @media only screen and (max-width: 1000px) {
 
   nav a {
@@ -257,7 +275,6 @@ nav a:hover {  /* Styling individual navbar elements*/
   }
   }
 
-/* Media queries for responsiveness of navbar */
 @media only screen and (max-width: 600px) {
   nav {
   width: 100%;
@@ -331,7 +348,7 @@ p {
     z-index: 1;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   div.scroll-container {
       min-height: 25vh;
       max-height: 25vh; /* Adjust the height as needed for smaller screens */
