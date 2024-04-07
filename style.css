@@ -10,8 +10,17 @@
     /* background-color: #7b74c6; */
     background-color: #11101D;
     margin-left: 80px;
+    width: fit-content;
     
   }
+
+
+  /* main {
+    width: 100%;
+  } */
+
+ 
+
 
   /* herosection is covering the top carousel */
   #heroSection {
@@ -20,7 +29,8 @@
     height: 100%;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     margin-top: 0px;
-    padding: 250px;
+    /* adjust padding for carousel height */
+    padding: 220px;  
    overflow-x: hidden;
    overflow-y: hidden;
   }
@@ -182,8 +192,7 @@
       overflow-x: hidden;
       overflow-y: hidden;
       width: 130px;
-      height: 220px;
-  
+      height: 220px; 
       &:nth-child(3) { left: 50%;}
       &:nth-child(4) { left: calc(50% + 140px); }
       &:nth-child(5) { left: calc(50% + 280px); }
@@ -200,7 +209,7 @@
   position: relative;
   width: 100%;
 }
-@media only screen and (max-width: 440px) {
+/* @media only screen and (max-width: 440px) {
   #hnav_Content {
       width: 115vw;
       margin-left: 0px;
@@ -213,7 +222,7 @@
       width: 165vw;
       margin-left: 0px;
   }
-}
+} */
 
 /* Media query for smaller screens */
 /* 
@@ -348,7 +357,7 @@ p {
     z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 848px) {
   div.scroll-container {
       min-height: 25vh;
       max-height: 25vh; /* Adjust the height as needed for smaller screens */

@@ -329,7 +329,7 @@ function searchMovies() {
   const images = document.querySelectorAll('.card-image'); // Select all images
 
   images.forEach(image => {
-      if (window.innerWidth <= 768) {
+      if (document.body.clientWidth <= 768) {
           image.style.height = "25vh"; // Decrease the height for mobile devices
       } else {
           image.style.height = "35vh"; // Default height for larger screens
