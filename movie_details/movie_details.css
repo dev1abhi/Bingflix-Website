@@ -584,7 +584,7 @@ option
   left: 0;
   right: 0;
   bottom: 0;
-  height: 60px;
+  height: 2.8vw;
   z-index: 2;
 }
 .paw-button .paws svg {
