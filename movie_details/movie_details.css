@@ -109,6 +109,7 @@ h1
 
 h2 {
   font-family: Poppins;
+  font-size: 2vw;
 }
 
 h3 
@@ -451,8 +452,8 @@ margin: 18px
 
 .markdown-div pre {
   background-color: #07112e;
-  padding: 1em;
-  border-radius: 0.5em;
+  padding: 1vw;
+  border-radius: 2.5vw;
   overflow: auto;
 }
 
