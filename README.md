@@ -26,6 +26,8 @@ This project is a web application that displays movies and TV series using the T
 
 2. Open the `index.html` file in your web browser.
 
+3. You have to use your own TMDB_API_KEY wherever the placeholder is given. for streaming sources,refer 3rd party providers.
+
 ## Usage
 
 - Browse and search for movies and TV series.
