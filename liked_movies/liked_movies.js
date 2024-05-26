@@ -1,9 +1,8 @@
 
-   
     
     document.addEventListener('DOMContentLoaded', function() {
 
-        const apiKey = '68e094699525b18a70bab2f86b1fa706';
+        const apiKey = 'TMDB_API_KEY';
         const moviesContainer = document.getElementById('moviesContainer');
         const likedMovies = JSON.parse(localStorage.getItem('likedMovies')) || [];
     
@@ -17,6 +16,7 @@
             movieCard.appendChild(shimmerDiv);
     
             moviesContainer.appendChild(movieCard);
+
     
             fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
                 .then(response => response.json())

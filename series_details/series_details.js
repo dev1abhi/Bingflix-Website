@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
    
     // Fetch series details using series ID from URL parameter
     const seriesId = getParameterByName('id');
-    const apiKey = '68e094699525b18a70bab2f86b1fa706';
+    const apiKey = 'TMDB_API_KEY_HERE';
     const seriesDetailsUrl = `https://api.themoviedb.org/3/tv/${seriesId}?api_key=${apiKey}`;
     const castUrl = `https://api.themoviedb.org/3/tv/${seriesId}/credits?api_key=${apiKey}`;
     const videosUrl = `https://api.themoviedb.org/3/tv/${seriesId}/videos?api_key=${apiKey}`;
@@ -139,9 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const seriesId = getParameterByName('id');
 
         // Construct the URLs for each server based on the selected season and episode
-        const server1Url = `https://embed.smashystream.com/playere.php?tmdb=${seriesId}&season=${seasonNumber}&episode=${episodeNumber}`;
-        const server2Url = `https://multiembed.mov/directstream.php?video_id=${seriesId}&tmdb=1&s=${seasonNumber}&e=${episodeNumber}`;
-        const server3Url =  `https://vidsrc.xyz/embed/tv?tmdb=${seriesId}&season=${seasonNumber}&episode=${episodeNumber}` ;
+        const server1Url = '';
+        const server2Url = '';
+        const server3Url = '';
       // Check the current embed URL
         const currentEmbedUrl = document.getElementById('seriesIframe').src;
 
