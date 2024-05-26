@@ -1,5 +1,4 @@
 # Welcome to Bingflix!!
-# Netflix Web Programming Project
 
 This project is a web application that displays movies and TV series using the TMDB API. It allows users to browse and search for movies and series, view details about them, and watch trailers.
 
