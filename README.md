@@ -3,6 +3,11 @@
 This project is a web application that displays movies and TV series using the TMDB API. It allows users to browse and search for movies and series, view details about them, and watch trailers.
 P.S. (Star it if you liked the concept,It gives me motivation to keep on working and adding features to it.)
 
+## Snapshots
+![image](https://github.com/user-attachments/assets/f0601a31-2e56-4ecd-83de-767de6bb4f1e)
+![image](https://github.com/user-attachments/assets/b3dcaeeb-950f-44dd-a52a-123ca98db22d)
+
+
 ## Features
 
 - Display Now Playing movies
